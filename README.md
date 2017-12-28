@@ -131,7 +131,7 @@ Store the following in your github repository:
 GitHub Details
 ---
 
-- Fork the [GitHub Repository for the Final Project](https://github.com/cs582-17s/DataVisFinal). You now have a copy associated with your username.
+- Fork the [GitHub Repository for the Final Project](https://github.com/cs582-18s/DataVisFinal). You now have a copy associated with your username.
 - Make changes to index.html to fulfill the project requirements. 
 - Make sure your "master" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
 - Edit the README.md with a link to your gh-pages site: http://YourUsernameGoesHere.github.io/DataVisFinal/index.html
