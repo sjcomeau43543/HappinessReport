@@ -11,20 +11,13 @@ To help you explore the design space, we will have a feedback session in which y
 
 You may have project teams of up to 3 people.
 
-The timeline is:
-
-- Wednesday February 15 -- Project Proposals
-- Tuesday February 23 -- Prototype Presentation & Feedback
-- Thursday March 2 -- Final Submission (with video) (grading criteria below)
-- Note: expect interspersed labs where you will work on your projects / receive feedback as part of Thursday labs.
-
 Proposal
 ---
 
 Create a proposal document addressing the following points.
 Use the points as headers in your document.
 
-- Basic Info. The project title, your names, e-mail addresses, GitHub ids, a link to the project repository (I encourage you to make it a public repo).
+- Basic Info. The project title, your names, e-mail addresses, GitHub ids, a link to the project repository (I encourage you to transfer your work to a public repo after the course).
 - Background and Motivation. Discuss your motivations and reasons for choosing this project, especially any background or research interests that may have influenced your decision.
 - Project Objectives. Provide the primary questions you are trying to answer with your visualization. What would you like to learn and accomplish? List the benefits.
 - Data. From where and how are you collecting your data? If appropriate, provide a link to your data sources.
@@ -42,7 +35,7 @@ For this Milestone we expect you to hand in your code and process documentation 
 
 For your Milestone you should have completed your data acquisition, or at least have a significant sample of your data. You must have your data structures in place. For example, if you plan to collect 1000 data records, but only have 200, that’s fine. If you are missing one of two datasets you want to use you will lose points, since you have to have the whole structure.
 
-You must have a working visualization prototype. You must not have all your views up and running, and it must not be completely interactive, but the direction and the content must be clear.
+You must have a working visualization prototype. You may not have all your views up and running, and it may not be completely interactive, but the direction and the content must be clear.
 
 Final Project Materials
 ---
@@ -131,10 +124,10 @@ Store the following in your github repository:
 GitHub Details
 ---
 
-- Fork the [GitHub Repository for the Final Project](https://github.com/cs582-18s/DataVisFinal). You now have a copy associated with your username.
+- Fork the repo. You now have a copy associated with your username.
 - Make changes to index.html to fulfill the project requirements. 
 - Make sure your "master" branch matches your "gh-pages" branch. See the GitHub Guides referenced above if you need help.
-- Edit the README.md with a link to your gh-pages site: http://YourUsernameGoesHere.github.io/DataVisFinal/index.html
+- Edit the README.md with a link to your gh-pages site: for example http://YourUsernameGoesHere.github.io/DataVisFinal/index.html
 - To submit, make a [Pull Request](https://help.github.com/articles/using-pull-requests/) on the original repository.
 
 Grading
@@ -149,4 +142,4 @@ Your individual project score will also be influenced by your peer evaluations.
 References
 ---
 
-- Much of this final project is adapted from: http://dataviscourse.net/2015/project/
+- This final project is adapted from http://dataviscourse.net/2015/project/
