@@ -41,12 +41,12 @@ Visualization Design
 
 Features
 ---
-## Must-Have Features
+### Must-Have Features
 
 
 >>List the features without which you would consider your project to be a failure.
 
-## Optional Features
+### Optional Features
 
 
 >>List the features which you consider to be nice to have, but not critical.
