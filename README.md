@@ -72,11 +72,11 @@ Visualization Design
 ---
 We plan on using somewhat of a story-telly technique to display our data.  Since we have so many different factors to display we want to start by showing the overall happiness per country in a simple cloropleth map similar to below.
 
-CLOROPLETH
+![cloropleth_example](img/proposal/cloropleth.png)
 
 We want the users to be able to interact with the data a little so we want to show happiness over time in a line graph for the selected country / continent in a line chart.
 
-LINE CHART
+![linechart_example](img/proposal/linechart.png)
 
 For each of our sub categories we plan to use a few different visualization techniques.
 
@@ -116,21 +116,20 @@ Project Schedule
 ---
 
 #### Milestone 1: 
-Description: Completed charts with proper data input (color scheme not important)
-Deadline: 
-Meeting times: 
+- Description: Completed charts with proper data input (color scheme not important)
+- Deadline: 
+- Meeting times: 
 #### Milestone 2: 
-Description: Adding intermediate observations
+- Description: Adding intermediate observations
+- Deadline:
+- Meeting times: 
 #### Milestone 3: 
-Description: Add color and format the rest of the webpage
-Deadline: 
-Meeting times: 
+- Description: Add color and format the rest of the webpage
+- Deadline: 
+- Meeting times: 
 #### Milestone 4: 
-Description: Presentation materials
-Deadline: 
-Meeting times: 
+- Description: Presentation materials
+- Deadline: 
+- Meeting times: 
 
 >>Make sure that you plan your work so that you can avoid a big rush right before the final project deadline, and delegate different modules and responsibilities among your team members. Write this in terms of weekly deadlines.
-
-
-
