@@ -11,7 +11,7 @@ Basic Information
 
 Background and Motivation
 ---
-
+The motivation for choosing this project was to determine what factors make people happy.  We saw a dataset of how happy people ranked themselves and decided we wanted to try to correlate that data to other economic factors, like proximity to parks, historical events, family size and other data points.  
 
 >>Discuss your motivations and reasons for choosing this project, especially any background or research interests that may have influenced your decision.
 
