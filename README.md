@@ -17,7 +17,14 @@ Background and Motivation
 
 Project Objectives 
 ---
+Some questions we are trying to answer ourselves and through our data visualizations are as follows.
 
+- What makes people happy? 
+- How does happiness compare across the world?
+- What differences between countries cause certain countries to be happier?
+- How do self perception (pessimism, view of others) affect accuracy of how happy people think they are?
+
+We chose this data because we want to learn about the world and how happy people 
 
 >>Provide the primary questions you are trying to answer with your visualization. What would you like to learn and accomplish? List the benefits.
 
