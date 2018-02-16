@@ -81,18 +81,18 @@ We want the users to be able to interact with the data a little so we want to sh
 For each of our sub categories we plan to use a few different visualization techniques.
 
 We want to start with life factors because this seems the most important and impactful on people. 
-Overall population
-Average family size
-Life expectancy
+-- Overall population
+- Average family size
+- Life expectancy
 
 For monetary factors we will display and analyze them in more charts.
-GDP
-Unemployment
-Inflation vs happiness over time in a line chart
+- GDP
+- Unemployment
+- Inflation vs happiness over time in a line chart
 
 Finally for extra curricular activities we will display them in the following charts.
-Alcohol consumption
-Participation in country wide-events
+- Alcohol consumption
+- Participation in country wide-events
 
 
 
@@ -133,3 +133,6 @@ Project Schedule
 - Meeting times: 
 
 >>Make sure that you plan your work so that you can avoid a big rush right before the final project deadline, and delegate different modules and responsibilities among your team members. Write this in terms of weekly deadlines.
+
+
+
