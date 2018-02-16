@@ -6,7 +6,7 @@ Each team member must push this document into his/her homework directory. As a b
 
 Basic Information
 ---
-- Project title:
+- Project title: Happiness
 - Authors: Samuel Coache, Samantha Comeau, William Schwartz
 - Emails: sccoache@wpi.edu, sjcomeau@wpi.edu, wrschwartz@wpi.edu
 - Github Usernames: sccoache, sjcomeau43543, williambannas
