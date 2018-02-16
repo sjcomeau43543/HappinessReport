@@ -28,19 +28,22 @@ Some questions we are trying to answer through our exploration data visualizatio
 We chose this data because we want to learn about reported happiness and what factors affect said happiness.  
 
 We want to break our data into a few main categories and see how these categories affect overall happiness.
+
 Extracurricular participation
-What do people in these countries do in their free time?
-Do they participate in country-wide events like the Olympics or Car-Free days?
-How much alcohol do they consume?
+- What do people in these countries do in their free time?
+- Do they participate in country-wide events like the Olympics or Car-Free days?
+- How much alcohol do they consume?
+
 Life factors
-Whats the overall population of their country?
-This could affect their self reflection on how much they can impact the world etc
-How large is the average family?
-How long are they expected to live?
+- Whats the overall population of their country?
+- This could affect their self reflection on how much they can impact the world etc
+- How large is the average family?
+- How long are they expected to live?
+
 Monetary factors
-GDP
-What is the unemployment rate?
-Has inflation affected their happiness? Stress?
+- GDP
+- What is the unemployment rate?
+- Has inflation affected their happiness? Stress?
 
 A benefit of comparing these different categories is that it allows us to see more of the whole picture.  Rather than solely focusing on something like socio-economic status or unemployment rates we can see how personal life and business life affect humans happiness, because overall, everything in their life is affecting them somehow.  We hope to use these categories to compare the different countries to learn what is most benefiting their happiness and what is making them less happy.  For example say America has a binge drinking problem and their happiness score is very low, and France doesn’t drink as often and their happiness is high.  One intermediate conclusion could be that drinking affects happiness.  Adding these intermediate conclusions together with the rest of the categories conclusions will show us the big picture on what factors truly contribute to an individual’s happiness. 
 
@@ -51,10 +54,10 @@ We found a data set on Kaggle.com representing world happiness scores.  However 
 All of our datasets are in the data/ folder in the project repository.
 
 Some resources we used to find these sites include:
-http://www.pewglobal.org/search/?query=happiness
-https://www.kaggle.com/unsdsn/world-happiness/data
-http://worldhappiness.report
-http://www.imf.org/external/index.htm
+- http://www.pewglobal.org/search/?query=happiness
+- https://www.kaggle.com/unsdsn/world-happiness/data
+- http://worldhappiness.report
+- http://www.imf.org/external/index.htm
 
 Data Processing
 ---
@@ -119,6 +122,7 @@ Project Schedule
 - Meeting times:
 -- Sunday 12-5 PM
 -- Monday 6-7:30 PM
+
 #### Milestone 2: 
 - Description: Adding intermediate observations
 - Deadline: Friday 2/23 11:59 PM
@@ -126,12 +130,14 @@ Project Schedule
 -- Wed 6-7:30 PM
 -- Wed 8:30-10 PM
 -- Thursday 6-8 PM
+
 #### Milestone 3: 
 - Description: Add color and interactions and format the rest of the webpage
 - Deadline: Sunday 2/25
 - Meeting times: 
 -- Friday 1-5 PM
 -- Sunday 12-5 PM
+
 #### Milestone 4: 
 - Description: Presentation materials
 - Deadline: Wednesday 2/27
