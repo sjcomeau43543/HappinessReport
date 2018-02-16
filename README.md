@@ -139,7 +139,7 @@ Project Schedule
 -- Monday 6-7:30 PM
 -- Tuesday 4-8 PM
 
-![when_to_meet](img/proposal/wtm.png)
+![when_to_meet](img/proposal/wtm.PNG)
 
 
 
