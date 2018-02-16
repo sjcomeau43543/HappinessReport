@@ -105,7 +105,7 @@ This produced our brainstorming sketches.
 ![Coache](img/proposal/coache_brain.JPG)
 
 We then made 3 potential designs from those.
-![Design1](img/proposal/Design_1.JPG)
+![Design1](img/proposal/Design1.JPG)
 ![Design2](img/proposal/Design_2.JPG)
 ![Design3](img/proposal/Design_3.JPG)
 
