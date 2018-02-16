@@ -1,10 +1,10 @@
-#Happiness
+Happiness
 ===
 *Remove this
 Each team member must push this document into his/her homework directory. As a ballpark number: your proposal should contain about 3-4 pages of text, plus 5-6 pages of sketches.
 *
 
-#Basic Information
+Basic Information
 ---
 - Project title:
 - Authors: Samuel Coache, Samantha Comeau, William Schwartz
@@ -12,13 +12,13 @@ Each team member must push this document into his/her homework directory. As a b
 - Github Usernames: sccoache, sjcomeau43543, williambannas
 - Repository:
 
-#Background and Motivation
+Background and Motivation
 ---
 The motivation for choosing this project was to determine what factors make people happy.  We saw a dataset of how people ranked themselves on their happiness and decided we wanted to try to correlate that data other factors, like the regions favorite extracurricular activities, historical events, family size, alcohol consumption, etc, and try to determine what makes people truly happy.  We have reviewed some of the other happiness reports out there, and believe that a lot of report the data, but don’t got far enough exploring what factors social, economic, and environmental factors contribute to those results. We believe that we can present this information in a visually appealing and informative manner to help distinguish some of the ambiguidy 
 
 One interest that influenced our decision to research happiness levels of the world is …. SOMEONE BULLSHIT HERE FOR A PARAGRAPH
 
-#Project Objectives 
+Project Objectives 
 ---
 Some questions we are trying to answer ourselves and through our data visualizations are as follows.
 
@@ -46,7 +46,7 @@ Has inflation affected their happiness? Stress?
 
 A benefit of comparing these different categories is that it allows us to see more of the whole picture.  Rather than solely focusing on something like socio-economic status or unemployment rates we can see how personal life and business life affect humans happiness, because overall, everything in their life is affecting them somehow.  We hope to use these categories to compare the different countries to learn what is most benefiting their happiness’s and what is making them less happy.  For example say America has a binge drinking problem and their happiness score is very low, and France doesn’t drink as often and their happiness is high.  One intermediate conclusion could be that drinking affects happiness.  Adding these intermediate conclusions together with the rest of the categories conclusions will show us the big picture on what factors truly contribute to an individual’s happiness. 
 
-#Data
+Data
 ---
 We found a data set on Kaggle.com representing world happiness scores.  However this dataset didn’t have some of the other factors we wanted to integrate so we found other datasets to use in conjunction with the main dataset.
 
@@ -58,7 +58,7 @@ https://www.kaggle.com/unsdsn/world-happiness/data
 http://worldhappiness.report
 http://www.imf.org/external/index.htm
 
-#Data Processing
+Data Processing
 ---
 We plan on using python scripts to cleanup any data we don’t need. This will include removing columns we don’t need from our datasets for certain visualizations to increase efficiency while loading the data.  We definitely will need to remove a lot of unneeded data.  
 
