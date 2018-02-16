@@ -71,6 +71,8 @@ We plan to get all of the categories mentioned above from our various data sets.
 
 Visualization Design
 ---
+Originally we had started by choosing 2 set graphs as below.
+
 We plan on using somewhat of a story-telly technique to display our data.  Since we have so many different factors to display we want to start by showing the overall happiness per country in a simple choropleth map similar to below.
 
 ![cloropleth_example](img/proposal/cloropleth.png)
@@ -95,10 +97,20 @@ Finally for extra curricular activities we will display them in the following ch
 - Alcohol consumption
 - Participation in country wide-events
 
+Then we decided to use the 5 design sheet method of deciding on our design because we were stuck on what we wanted to do.
 
+This produced our brainstorming sketches.
+![Sam](img/proposal/sam_brain.JPG)
+![WIll](img/proposal/will_brain.JPG)
+![Coache](img/proposal/coache_brain.JPG)
 
+We then made 3 potential designs from those.
+![Design1](img/proposal/Design_1.JPG)
+![Design2](img/proposal/Design_2.JPG)
+![Design3](img/proposal/Design_3.JPG)
 
->>How will you display your data? Provide some general ideas that you have for the visualization design. Develop three alternative prototype designs for your visualization. Create one final design that incorporates the best of your three designs. Describe your designs and justify your choices of visual encodings. We recommend you use the Five Design Sheet Methodology.
+and we chose...
+![Final](img/proposal/Final.JPG)
 
 Features
 ---
