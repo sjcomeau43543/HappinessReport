@@ -1,8 +1,5 @@
 Happiness
 ===
-*Remove this
-Each team member must push this document into his/her homework directory. As a ballpark number: your proposal should contain about 3-4 pages of text, plus 5-6 pages of sketches.
-*
 
 Basic Information
 ---
