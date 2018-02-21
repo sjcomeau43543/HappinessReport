@@ -73,7 +73,7 @@ function cloropleth(year)
              .style("opacity", .9);
              pennisTip.text( d.properties.name + "\n" + happyness.get(d.id) +  " /10 \n(Average)")
              .style("left", (d3.event.pageX) + "px")
-             .style("top", (d3.event.pageY-28) + "px");
+             .style("top", (d3.event.pageY) + "px");
            }
   	})
 
