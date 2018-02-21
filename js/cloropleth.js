@@ -1,5 +1,8 @@
-function cloropleth()
+function cloropleth(year)
 {
+  console.log(year);
+  d3.selectAll("#cloroplethMap").remove();
+
   var width = 960,
       height = 600,
       centered;
@@ -21,9 +24,10 @@ function cloropleth()
       .domain(d3.range(0, 9))
       .range(d3.schemePurples[9]);
 
+  var svgHappyness;
 
-
-  var svgHappyness = d3.select(".Map").append("svg")
+  svgHappyness = d3.select(".Map").append("svg")
+      .attr("id", "cloroplethMap")
       .attr("width", width)
       .style("border-style", "solid")
       .style("border",5)
@@ -41,13 +45,12 @@ function cloropleth()
       .attr("height", height)
       .on("click", clicked);
 
-
   var gCountry = svgHappyness.append("g");
 
 
   d3.queue()
       .defer(d3.json, "http://enjalot.github.io/wwsd/data/world/world-110m.geojson")
-      .defer(d3.csv, "data/2016_data.csv", function(d) { happyness.set(d.Country_code, d.Happiness_score)})
+      .defer(d3.csv, "data/"+year+".csv", function(d) { happyness.set(d.code, d.happiness)})
       .await(ready);
 
 

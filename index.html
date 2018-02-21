@@ -52,7 +52,7 @@
         <th><input type="radio" name="year" id="year_11" value="2011"> 2011<br></th>
         <th><input type="radio" name="year" id="year_10" value="2010"> 2010<br></th>
         <th><input type="radio" name="year" id="year_09" value="2009"> 2009<br></th>
-        <th><input type="radio" name="year" id="year_08" value="2008"> 2008<br></th>    
+        <th><input type="radio" name="year" id="year_08" value="2008"> 2008<br></th>
       </tr>
     </table>
   </div>
@@ -69,13 +69,13 @@
 <script>
 document.getElementById("yearForm").addEventListener("click", function(){
   let year = document.querySelector('input[name="year"]:checked').value;
-  //cloropleth(year);
-  //cluster(year);
+  cloropleth(year);
+  cluster(year);
 });
 
 //first page load
-let defaultYear = "2017";
-cloropleth();
+let defaultYear = "2016";
+cloropleth(defaultYear);
 cluster(defaultYear);
 </script>
 <script type="text/javascript">
