@@ -71,35 +71,23 @@ with open("alcohol_consumption.csv", "rb") as alc:
 					countries.get(row[1]).get(years[i])['alcohol_consumption'] = -1.
 
 
-
 # write the new file
 files = ['2008.csv', '2009.csv', '2010.csv', '2011.csv', '2012.csv', '2013.csv', '2014.csv', '2015.csv', '2016.csv']
 for i in range(9):
 	with open(files[i], "wb") as new:
 		writer = csv.writer(new)
-		writer.writerow(['code', 'gdp', 'population', 'inflation', 'unemployment', 'alcohol'])
+		writer.writerow(['code', 'happiness', 'gdp', 'population', 'inflation', 'unemployment', 'alcohol'])
 		for key in countries.keys():
 			for year in countries.get(key):
 				if year == years[i]:
-					if countries.get(key).get(year).get('happiness') == None:
-						writer.writerow([
-							key, 
-							-1.,
-							countries.get(key).get(year).get('gdp'),
-							countries.get(key).get(year).get('population'),
-							countries.get(key).get(year).get('inflation'),
-							countries.get(key).get(year).get('unemployment'),
-							countries.get(key).get(year).get('alcohol')
-							])
-					else:
-						writer.writerow([
-							key,
-							countries.get(key).get(year).get('happiness'),
-							countries.get(key).get(year).get('gdp'),
-							countries.get(key).get(year).get('population'),
-							countries.get(key).get(year).get('inflation'),
-							countries.get(key).get(year).get('unemployment'),
-							countries.get(key).get(year).get('alcohol')])
+					writer.writerow([
+						key,
+						countries.get(key).get(year).get('happiness'),
+						countries.get(key).get(year).get('gdp'),
+						countries.get(key).get(year).get('population'),
+						countries.get(key).get(year).get('inflation'),
+						countries.get(key).get(year).get('unemployment'),
+						countries.get(key).get(year).get('alcohol_consumption')])
 						
 						
 
