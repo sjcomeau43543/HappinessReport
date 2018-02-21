@@ -3,8 +3,8 @@ var width = 960,
     height = 500,
     maxRadius = 12;
 
-var n = 200, // total number of circles
-    m = 10; // number of distinct clusters
+var n = 196, // total number of circles
+    m = 1; // number of distinct clusters
 
 var color = d3.scaleOrdinal(d3.schemeCategory10).domain(d3.range(m));
 
@@ -36,6 +36,8 @@ var force = d3.forceSimulation()
 var svg = d3.select(".Cluster").append("svg")
     .attr("width", width)
     .attr("height", height)
+    .style("border-style", "solid")
+    .style("border",5)
   .append('g')
     .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
