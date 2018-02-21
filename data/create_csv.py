@@ -34,26 +34,26 @@ with open("GDP_I_Pop_Unemp.csv", "rb") as stats:
 		if row[0] in countries.keys():
 			if(row[2] == 'Population'):
 				for i in range(9):
-					if(row[i+15] != 'n/a'):
+					if(row[i+15] != 'n/a' and row[i+15] != None):
 						countries.get(row[0]).get(years[i])['population'] = float(row[i+15]) * 1000000
 					else:
 						countries.get(row[0]).get(years[i])['population'] = -1.
 					
 			elif(row[2] == 'Gross domestic product constant prices'):
 				for i in range(9):
-					if(row[i+15] != 'n/a'):
+					if(row[i+15] != 'n/a' and row[i+15] != None):
 						countries.get(row[0]).get(years[i])['gdp'] = float(row[i+15]) * 1000000000
 					else:
 						countries.get(row[0]).get(years[i])['gdp'] = -1.	
 			elif(row[2] == 'Inflation average consumer prices'):
 				for i in range(9):
-					if(row[i+15] != 'n/a'):
+					if(row[i+15] != 'n/a' and row[i+15] != None):
 						countries.get(row[0]).get(years[i])['inflation'] = float(row[i+15])
 					else:
 						countries.get(row[0]).get(years[i])['inflation'] = -1.
 			elif(row[2] == 'Unemployment rate'):
 				for i in range(9):
-					if(row[i+15] != 'n/a'):
+					if(row[i+15] != 'n/a' and row[i+15] != None):
 						countries.get(row[0]).get(years[i])['unemployment'] = float(row[i+15])
 					else:
 						countries.get(row[0]).get(years[i])['unemployment'] = -1.
@@ -63,47 +63,45 @@ with open("GDP_I_Pop_Unemp.csv", "rb") as stats:
 with open("alcohol_consumption.csv", "rb") as alc:
 	reader = csv.reader(alc)
 	for row in reader:
-		print row
 		if row[1] in countries.keys():
 			for i in range(9):
-				if(row[i+2] != ''):
+				if(row[i+2] != '' and row[i+2] != None):
 					countries.get(row[1]).get(years[i])['alcohol_consumption'] = float(row[i+2])
 				else:
 					countries.get(row[1]).get(years[i])['alcohol_consumption'] = -1.
 
 
-print countries
 
+# write the new file
+files = ['2008.csv', '2009.csv', '2010.csv', '2011.csv', '2012.csv', '2013.csv', '2014.csv', '2015.csv', '2016.csv']
+for i in range(9):
+	with open(files[i], "wb") as new:
+		writer = csv.writer(new)
+		for key in countries.keys():
+			for year in countries.get(key):
+				if year == years[i]:
+					if countries.get(key).get(year).get('happiness') == None:
+						writer.writerow([
+							key, 
+							-1.,
+							countries.get(key).get(year).get('gdp'),
+							countries.get(key).get(year).get('population'),
+							countries.get(key).get(year).get('inflation'),
+							countries.get(key).get(year).get('unemployment'),
+							countries.get(key).get(year).get('alcohol')
+							])
+					else:
+						writer.writerow([
+							key,
+							countries.get(key).get(year).get('happiness'),
+							countries.get(key).get(year).get('gdp'),
+							countries.get(key).get(year).get('population'),
+							countries.get(key).get(year).get('inflation'),
+							countries.get(key).get(year).get('unemployment'),
+							countries.get(key).get(year).get('alcohol')])
+						
+						
 
-'''
-# remove the unneeded sets from the sets.csv file
-set_values = []
-with open("data/sets.csv", "rb") as sets:
-	set_reader = csv.reader(sets)
-	for set_row in set_reader:
-		set_values.append(set_row[0])
-
-inventory_ids = []
-set_values_inv = []
-with open("data/inventories.csv", "rb") as inventories:
-	reader = csv.reader(inventories)
-	for inv_row in reader:
-		if inv_row[1] in set_values:
-			inventory_ids.append(inv_row[0])
-			set_values_inv.append(inv_row[1])
-
-
-with open("data/sets.csv", "rb") as sets, open("data/sets_updated.csv", "wb") as sets_updated:
-	set_reader = csv.reader(sets)
-	set_writer = csv.writer(sets_updated)
-
-	#manually add the headers after
-
-	for row in set_reader:
-		for i in range(len(set_values_inv)):
-			git puif row[0] == set_values_inv[i]:
-				set_writer.writerow([inventory_ids[i], row[1], row[2], row[3], row[4]]);
-'''
 
 
 
