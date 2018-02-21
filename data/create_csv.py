@@ -77,6 +77,7 @@ files = ['2008.csv', '2009.csv', '2010.csv', '2011.csv', '2012.csv', '2013.csv',
 for i in range(9):
 	with open(files[i], "wb") as new:
 		writer = csv.writer(new)
+		writer.writerow(['code', 'gdp', 'population', 'inflation', 'unemployment', 'alcohol'])
 		for key in countries.keys():
 			for year in countries.get(key):
 				if year == years[i]:
