@@ -49,7 +49,7 @@ function cloropleth(year)
 
 
   d3.queue()
-      .defer(d3.json, "http://enjalot.github.io/wwsd/data/world/world-110m.geojson")
+      .defer(d3.json, "https://enjalot.github.io/wwsd/data/world/world-110m.geojson")
       .defer(d3.csv, "data/"+year+".csv", function(d) { happyness.set(d.code, d.happiness)})
       .await(ready);
 
