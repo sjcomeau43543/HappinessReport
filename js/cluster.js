@@ -1,7 +1,10 @@
-function cluster(){
-var width = 960,
-    height = 500,
-    maxRadius = 12;
+function cluster(year){
+  console.log("Cluster Function")
+  console.log(year)
+
+  var width = 960,
+      height = 500,
+      maxRadius = 12;
 
 var n = 196, // total number of circles
     m = 1; // number of distinct clusters

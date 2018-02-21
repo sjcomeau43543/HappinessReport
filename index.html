@@ -40,6 +40,23 @@
 <html>
 <body>
   <h1>Average Reported Happiness</h1>
+  <div id="yearForm">
+    <h3>Year</h3>
+    <table>
+      <tr>
+        <th><input type="radio" name="year" id="year_16" value="2016"> 2016<br></th>
+        <th><input type="radio" name="year" id="year_15" value="2015"> 2015<br></th>
+        <th><input type="radio" name="year" id="year_14" value="2014"> 2014<br></th>
+        <th><input type="radio" name="year" id="year_13" value="2013"> 2013<br></th>
+        <th><input type="radio" name="year" id="year_12" value="2012"> 2012<br></th>
+        <th><input type="radio" name="year" id="year_11" value="2011"> 2011<br></th>
+        <th><input type="radio" name="year" id="year_10" value="2010"> 2010<br></th>
+        <th><input type="radio" name="year" id="year_09" value="2009"> 2009<br></th>
+        <th><input type="radio" name="year" id="year_08" value="2008"> 2008<br></th>    
+      </tr>
+    </table>
+  </div>
+  <br>
   <div class="Map"> </div>
   <div class="Cluster"> </div>
 </body>
@@ -50,6 +67,17 @@
 <script src="js/cluster.js"></script>
 <script src="js/cloropleth.js"></script>
 <script>
+document.getElementById("yearForm").addEventListener("click", function(){
+  let year = document.querySelector('input[name="year"]:checked').value;
+  //cloropleth(year);
+  //cluster(year);
+});
+
+//first page load
+let defaultYear = "2017";
 cloropleth();
-cluster();
+cluster(defaultYear);
+</script>
+<script type="text/javascript">
+//let year = document.getElementById("Year").value;
 </script>
