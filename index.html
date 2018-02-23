@@ -1,83 +1,86 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-.background {
-  fill: none;
-  pointer-events: all;
-}
-
-#counties {
-  fill: none;
-}
-
-#counties .active {
-  stroke-width: 3;
-  stroke: #000;
-}
-
-.counties:hover{
-		fill-opacity:0.5;
-	}
-  /* Style for Custom Tooltip */
-  div.tooltip {
-    white-space: pre;
-   	position: absolute;
-  	text-align: center;
-  	width: 100px;
-  	height: 60px;
-  	padding: 2px;
-  	font: 12px sans-serif;
-  	background: white;
-  	border: 0px;
-  	border-radius: 8px;
-  	pointer-events: none;
-  }
-
-
-</style>
-
 <html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="//d3js.org/d3.v4.min.js"></script>
+	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+	<script src="https://d3js.org/topojson.v1.min.js"></script>
+	<script src="js/cluster.js"></script>
+	<script src="js/cloropleth.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
 <body>
-  <h1>Average Reported Happiness</h1>
-  <div id="yearForm">
-    <h3>Year</h3>
-    <table>
-      <tr>
-        <th><input type="radio" name="year" id="year_16" value="2016"> 2016<br></th>
-        <th><input type="radio" name="year" id="year_15" value="2015"> 2015<br></th>
-        <th><input type="radio" name="year" id="year_14" value="2014"> 2014<br></th>
-        <th><input type="radio" name="year" id="year_13" value="2013"> 2013<br></th>
-        <th><input type="radio" name="year" id="year_12" value="2012"> 2012<br></th>
-        <th><input type="radio" name="year" id="year_11" value="2011"> 2011<br></th>
-        <th><input type="radio" name="year" id="year_10" value="2010"> 2010<br></th>
-        <th><input type="radio" name="year" id="year_09" value="2009"> 2009<br></th>
-        <th><input type="radio" name="year" id="year_08" value="2008"> 2008<br></th>    
-      </tr>
-    </table>
-  </div>
-  <br>
-  <div class="Map"> </div>
-  <div class="Cluster"> </div>
+	<h1>Average Reported Happiness</h1>
+	<div id="yearForm">
+		<div class="range">
+			<input type="range" min="1" max="9" steps="1" value="1">
+		</div>
+
+		<ul class="range-labels">
+			<li class="active selected">2008</li>
+			<li>2009</li>
+			<li>2010</li>
+			<li>2011</li>
+			<li>2012</li>
+			<li>2013</li>
+			<li>2014</li>
+			<li>2015</li>
+			<li>2016</li>
+		</ul>
+	</div>
+	<br>
+	<div class="Map"> </div>
+	<div class="Cluster"> </div>
 </body>
 </html>
-<script src="//d3js.org/d3.v4.min.js"></script>
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-<script src="http://d3js.org/topojson.v1.min.js"></script>
-<script src="js/cluster.js"></script>
-<script src="js/cloropleth.js"></script>
 <script>
-document.getElementById("yearForm").addEventListener("click", function(){
-  let year = document.querySelector('input[name="year"]:checked').value;
-  //cloropleth(year);
-  //cluster(year);
-});
+	document.getElementById("yearForm").addEventListener("click", function(){
+	  let year = document.querySelector('input[name="year"]:checked').value;
+	  //cloropleth(year);
+	  //cluster(year);
+	});
 
-//first page load
-let defaultYear = "2017";
-cloropleth();
-cluster(defaultYear);
-</script>
-<script type="text/javascript">
-//let year = document.getElementById("Year").value;
+	//first page load
+	let defaultYear = "2016";
+	cloropleth();
+	cluster(defaultYear);
+
+	// year selector
+	var sheet = document.createElement('style'),  
+		$rangeInput = $('.range input'),
+		prefs = ['webkit-slider-runnable-track', 'moz-range-track', 'ms-track'];
+
+	document.body.appendChild(sheet);
+
+	var getTrackStyle = function (el) {  
+			var curVal = el.value,
+				val = (curVal - 1) * 16.6667,
+				style = '';
+
+			// Set active label
+			$('.range-labels li').removeClass('active selected');
+
+			var curLabel = $('.range-labels').find('li:nth-child(' + curVal + ')');
+
+			curLabel.addClass('active selected');
+			curLabel.prevAll().addClass('selected');
+
+
+
+			return style;
+		}
+
+		$rangeInput.on('input', function () {
+		sheet.textContent = getTrackStyle(this);
+	});
+
+	// Change input value on label click
+	$('.range-labels li').on('click', function () {
+		var index = $(this).index();
+
+		$rangeInput.val(index + 1).trigger('input');
+
+	});
 </script>
