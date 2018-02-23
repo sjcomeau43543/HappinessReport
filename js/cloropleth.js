@@ -58,7 +58,7 @@ function cloropleth(year)
       if (error) throw error;
 
     gCountry.append("g")
-        .attr("id", "counties")
+        .attr("id", "countries")
       .selectAll("path")
         .data(world.features)
       .enter().append("path")

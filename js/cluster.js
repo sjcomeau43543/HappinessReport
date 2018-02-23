@@ -18,14 +18,14 @@ var colorPurples = d3.scaleThreshold()
 // The largest node for each cluster.
 var clusters = new Array(m);
 
- var nodes = d3.map();
+ var nodes = new Array();
 
 d3.queue()
-    .defer(d3.csv, "data/"+year+".csv", function(d) {nodes.set( d.code, { i:0, r:+d.population, happy:+d.happiness});})
+    .defer(d3.csv, "data/"+year+".csv", function(d) {nodes.push({id:d.code, i:0, r:+d.population, happy:+d.happiness});})
     .await(ready(nodes));
 
 
-    function ready(error, d3) {
+    function ready(error, nodes) {
     if (error) throw error;
 
     console.log(nodes);

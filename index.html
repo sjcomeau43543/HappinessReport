@@ -10,12 +10,13 @@
 	<script src="js/cloropleth.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
+
+<body>
 	<h1>Average Reported Happiness</h1>
 	<div id="yearForm">
 		<div class="range">
 			<input type="range" min="1" max="9" steps="1" value="1">
 		</div>
-
 		<ul class="range-labels">
 			<li class="active selected">2008</li>
 			<li>2009</li>
@@ -32,27 +33,26 @@
 	<div class="Map"> </div>
 	<div class="Cluster"> </div>
 </body>
-</html>
 <script>
-	document.getElementById("yearForm").addEventListener("click", function(){
-	  let year = document.querySelector('input[name="year"]:checked').value;
-	  //cloropleth(year);
-	  //cluster(year);
-	});
+	// document.getElementById("yearForm").addEventListener("click", function(){
+	//   let year = document.querySelector('input[name="year"]:checked').value;
+	//  cloropleth(year);
+	//  cluster(year);
+	//});
 
 	//first page load
 	let defaultYear = "2016";
-	cloropleth();
+	cloropleth(defaultYear);
 	cluster(defaultYear);
 
 	// year selector
-	var sheet = document.createElement('style'),  
+	var sheet = document.createElement('style'),
 		$rangeInput = $('.range input'),
 		prefs = ['webkit-slider-runnable-track', 'moz-range-track', 'ms-track'];
 
 	document.body.appendChild(sheet);
 
-	var getTrackStyle = function (el) {  
+	var getTrackStyle = function (el) {
 			var curVal = el.value,
 				val = (curVal - 1) * 16.6667,
 				style = '';
@@ -82,3 +82,4 @@
 
 	});
 </script>
+</html>

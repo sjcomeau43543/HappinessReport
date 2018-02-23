@@ -4,16 +4,16 @@
 	pointer-events: all;
 }
 
-#counties {
+#countries {
 	fill: none;
 }
 
-#counties .active {
+#countries .active {
 	stroke-width: 3;
 	stroke: #000;
 }
 
-.counties:hover{
+.countries:hover{
 	fill-opacity:0.5;
 }
 
