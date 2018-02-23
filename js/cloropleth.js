@@ -22,7 +22,7 @@ function cloropleth(year)
 
   var colorPurples = d3.scaleThreshold()
       .domain(d3.range(0, 9))
-      .range(d3.schemePurples[9]);
+      .range(d3.schemeBlues[9]);
 
   var svgHappyness;
 

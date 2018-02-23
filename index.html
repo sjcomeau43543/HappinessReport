@@ -2,85 +2,37 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="index.css">
-	<link rel="stylesheet" type="text/scss" href="rangepicker.scss">
+
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/selector.css">
+
 	<script src="//d3js.org/d3.v4.min.js"></script>
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	<script src="https://d3js.org/topojson.v1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	<script src="js/cluster.js"></script>
 	<script src="js/cloropleth.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/selector.js"></script>
+
+
 </head>
 
 <body>
 	<h1>Average Reported Happiness</h1>
-	<div id="yearForm">
-		<div class="range">
-			<input type="range" min="1" max="9" steps="1" value="1">
-		</div>
-		<ul class="range-labels">
-			<li class="active selected">2008</li>
-			<li>2009</li>
-			<li>2010</li>
-			<li>2011</li>
-			<li>2012</li>
-			<li>2013</li>
-			<li>2014</li>
-			<li>2015</li>
-			<li>2016</li>
-		</ul>
+	<div id="selector_div">	
+		<input type="range" min="2008" max="2016" value="2016" step="1" class="slider" id="myRange">
 	</div>
 	<br>
 	<div class="Map"> </div>
 	<div class="Cluster"> </div>
 </body>
 <script>
-	// document.getElementById("yearForm").addEventListener("click", function(){
-	//   let year = document.querySelector('input[name="year"]:checked').value;
-	//  cloropleth(year);
-	//  cluster(year);
-	//});
 
 	//first page load
 	let defaultYear = "2016";
+	selector(defaultYear);
 	cloropleth(defaultYear);
 	cluster(defaultYear);
-
-	// year selector
-	var sheet = document.createElement('style'),
-		$rangeInput = $('.range input'),
-		prefs = ['webkit-slider-runnable-track', 'moz-range-track', 'ms-track'];
-
-	document.body.appendChild(sheet);
-
-	var getTrackStyle = function (el) {
-			var curVal = el.value,
-				val = (curVal - 1) * 16.6667,
-				style = '';
-
-			// Set active label
-			$('.range-labels li').removeClass('active selected');
-
-			var curLabel = $('.range-labels').find('li:nth-child(' + curVal + ')');
-
-			curLabel.addClass('active selected');
-			curLabel.prevAll().addClass('selected');
-
-
-
-			return style;
-		}
-
-		$rangeInput.on('input', function () {
-		sheet.textContent = getTrackStyle(this);
-	});
-
-	// Change input value on label click
-	$('.range-labels li').on('click', function () {
-		var index = $(this).index();
-
-		$rangeInput.val(index + 1).trigger('input');
-
-	});
 </script>
 </html>
