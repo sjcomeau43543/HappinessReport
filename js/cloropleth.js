@@ -106,7 +106,7 @@ function cloropleth(year)
 
   function move(d, x, y, k) {
     gCountry.selectAll("path")
-        .classed("active", centered && function(d) { return d === centered; });
+        .classed("activeCount", centered && function(d) { return d === centered; });
 
     gCountry.transition()
         .duration(750)
