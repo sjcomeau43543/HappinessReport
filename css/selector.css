@@ -29,11 +29,11 @@
 .slider::-moz-range-thumb {
     width: 25px;
     height: 25px;
-    background: #4CAF50;
+    background: #839099;
     cursor: pointer;
 }
 
 #selector_div {
-	width: 100px;
+	width: 900px;
 
 }
