@@ -8,6 +8,7 @@ Basic Information
 - Emails: sccoache@wpi.edu, sjcomeau@wpi.edu, wrschwartz@wpi.edu
 - Github Usernames: sccoache, sjcomeau43543, williambannas
 - Repository: https://github.com/sjcomeau43543/DataVisFinal 
+- link: https://sjcomeau43543.github.io/DataVisFinal/
 
 Background and Motivation
 ---
