@@ -1,6 +1,4 @@
-function cloropleth(year)
-{
-  console.log(year);
+function cloropleth(year){
   d3.selectAll("#cloroplethMap").remove();
 
   var width = 960,
@@ -34,7 +32,7 @@ function cloropleth(year)
       .attr("height", height);
 
   // jk its the tool tip but this name is funnier lol
-  var pennisTip = d3.select("body")
+  var tip = d3.select("body")
       		    .append("div")
           		.attr("class", "tooltip")
           		.style("opacity", 0);
@@ -68,10 +66,10 @@ function cloropleth(year)
         .on("click", clicked)
         .on("mouseover", function(d) {
           if(happyness.get(d.id)){
-      	pennisTip.transition()
+      	tip.transition()
         	   .duration(200)
              .style("opacity", .9);
-             pennisTip.text( d.properties.name + "\n" + happyness.get(d.id) +  " /10 \n(Average)")
+             tip.text( d.properties.name + "\n" + happyness.get(d.id) +  " /10 \n(Average)")
              .style("left", (d3.event.pageX) + "px")
              .style("top", (d3.event.pageY) + "px");
            }
@@ -79,7 +77,7 @@ function cloropleth(year)
 
       // fade out tooltip on mouse out
       .on("mouseout", function(d) {
-          pennisTip.style("opacity", 0);
+          tip.style("opacity", 0);
       });
 
       makeLables();

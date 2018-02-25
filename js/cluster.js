@@ -7,38 +7,36 @@ function cluster(year){
 		height = 500,
 		maxRadius = 12;
 
-	var n = 196, // total number of circles
-		m = 1; // number of distinct clusters
+	var width = 960,
+    height = 500;
 
-
-	var colorPurples = d3.scaleThreshold()
+	var color = d3.scaleThreshold()
 		.domain(d3.range(0, 9))
 		.range(d3.schemeBlues[9]);
 
-	// The largest node for each cluster.
-	var clusters = new Array(m);
+	var countries = [];
 
-	var nodes = new Array();
+	d3.csv("data/"+year+".csv", (countries) => {
 
-	d3.queue()
-		.defer(d3.csv, "data/"+year+".csv", function(d) {nodes.push({id:d.code, i:0, r:+d.population, happy:+d.happiness});})
-		.await(ready(nodes));
+		countries.forEach(function(d) {
+		if(isNaN(d.happiness) || d.happiness === "-1.0" || d.happiness === "") { d.happiness = "unavailable"; } else {d.happiness = +d.happiness;}
+		if(isNaN(d.gdp) || d.gdp === "-1.0" || d.gdp === "") { d.gdp = "unavailable"; } else {d.gdp = +d.gdp}
+		if(isNaN(d.population) || d.population === "-1.0" || d.population === "") { d.population = "unavailable"; } else {d.population = +d.population;}
+		if(isNaN(d.inflation) || d.inflation === "-1.0" || d.inflation === "") { d.inflation = "unavailable"; } else {d.inflation = +d.inflation;}
+		if(isNaN(d.unemployment) || d.unemployment === "-1.0" || d.unemployment === "") { d.unemployment = "unavailable"; } else {d.unemployment = +d.unemployment;}
+		if(isNaN(d.alcohol) || d.alcohol === "-1.0" || d.alcohol === "") { d.alcohol_consumption = "unavailable"; } else {d.alcohol_consumption = +d.alcohol;}
 
 
-	function ready(error, nodes) {
-		if (error) throw error;
-
-		console.log(nodes);
+		});
 
 		var forceCollide = d3.forceCollide()
-			.radius(function(d) { return d.radius + 1.5; })
+			.radius(function(d) { return 15 + 1.5; })
 			.iterations(1);
 
 		var force = d3.forceSimulation()
-			.nodes(nodes)
+			.nodes(countries)
 			.force("center", d3.forceCenter())
 			.force("collide", forceCollide)
-			.force("cluster", forceCluster)
 			.force("gravity", d3.forceManyBody(30))
 			.force("x", d3.forceX().strength(.7))
 			.force("y", d3.forceY().strength(.7))
@@ -54,27 +52,17 @@ function cluster(year){
 			.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
 		var circle = svg.selectAll("circle")
-			.data(nodes)
-
+			.data(countries)
 			.enter().append("circle")
-			.attr("r", function(d) { return d.radius; })
-			.style("fill", function(d) { 
-				return colorPurples(d.happy); 
-				});
-	}
+			.attr("r", 15)
+			.style("fill", function(d) { return color(d.happiness); });
 
-	function tick() {
-		circle
-			.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) { return d.y; });
-	}
-
-	function forceCluster(alpha) {
-		for (var i = 0, n = nodes.length, node, cluster, k = alpha * 1; i < n; ++i) {
-			node = nodes[i];
-			cluster = clusters[node.cluster];
-			node.vx -= (node.x - cluster.x) * k;
-			node.vy -= (node.y - cluster.y) * k;
+		function tick() {
+			circle
+				.attr("cx", function(d) { return d.x; })
+				.attr("cy", function(d) { return d.y; });
 		}
-	}
+
+	});
+
 }
