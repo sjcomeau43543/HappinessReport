@@ -33,9 +33,9 @@ function cloropleth(year){
 
   // jk its the tool tip but this name is funnier lol
   var tip = d3.select("body")
-      		    .append("div")
-          		.attr("class", "tooltip")
-          		.style("opacity", 0);
+	    .append("div")
+  		.attr("class", "tooltip")
+  		.style("opacity", 0);
 
   svgHappyness.append("rect")
       .attr("class", "background")
@@ -65,20 +65,22 @@ function cloropleth(year){
         .attr("stroke", "black")
         .on("click", clicked)
         .on("mouseover", function(d) {
-          if(happyness.get(d.id)){
-      	tip.transition()
-        	   .duration(200)
-             .style("opacity", .9);
-             tip.text( d.properties.name + "\n" + happyness.get(d.id) +  " /10 \n(Average)")
-             .style("left", (d3.event.pageX) + "px")
-             .style("top", (d3.event.pageY) + "px");
-           }
+			if(happyness.get(d.id)){
+				tip.transition()
+					.duration(200)
+					.style("opacity", .9);
+				tip.text( d.properties.name + "\n" + happyness.get(d.id) +  " /10 \n(Average)")
+					.style("left", (d3.event.pageX) + "px")
+					.style("top", (d3.event.pageY) + "px");
+			}
   	})
 
       // fade out tooltip on mouse out
-      .on("mouseout", function(d) {
-          tip.style("opacity", 0);
-      });
+		.on("mouseout", function(d) {
+			tip.transition()
+				.duration(50)
+				.style("opacity", 0);
+		});
 
       makeLables();
   }

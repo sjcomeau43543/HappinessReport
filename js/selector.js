@@ -1,5 +1,5 @@
-function selector(year){
-	
+function selector(){
+	return document.getElementById("year_range").value;
 }
 
 function getVals(){

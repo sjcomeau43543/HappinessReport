@@ -1,14 +1,8 @@
 function cluster(year){
-	console.log("Cluster Function")
-	console.log(year)
 	d3.selectAll("#clusterSVG").remove();
 
-	var width = 960,
-		height = 500,
-		maxRadius = 12;
-
-	var width = 960,
-    height = 500;
+	var width = 700,
+    	height = 500;
 
 	var color = d3.scaleThreshold()
 		.domain(d3.range(0, 9))
@@ -28,6 +22,7 @@ function cluster(year){
 
 
 		});
+		
 
 		var forceCollide = d3.forceCollide()
 			.radius(function(d) { return 15 + 1.5; })
@@ -44,6 +39,7 @@ function cluster(year){
 
 		var svg = d3.select(".Cluster").append("svg")
 			.attr("id", "clusterSVG")
+			.attr("style", "float:left")
 			.attr("width", width)
 			.attr("height", height)
 			.style("border-style", "solid")
@@ -51,11 +47,32 @@ function cluster(year){
 			.append('g')
 			.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
+	  var tip = d3.select("body")
+			.append("div")
+	  		.attr("class", "tooltip")
+	  		.style("opacity", 0);
+
 		var circle = svg.selectAll("circle")
 			.data(countries)
 			.enter().append("circle")
 			.attr("r", 15)
-			.style("fill", function(d) { return color(d.happiness); });
+			.style("fill", function(d) { return color(d.happiness); })
+			.on("mouseover", function(d) {
+				if(d.happiness != "unavailable"){
+					tip.transition()
+						.duration(200)
+						.style("opacity", .9);
+					
+					tip.text( d.code + "\n" + d.happiness +  " /10 \n(Average)")
+						.style("left", (d3.event.pageX) + "px")
+						.style("top", (d3.event.pageY) + "px");
+				}
+				})
+			.on("mouseout", function(d) {
+				tip.transition()
+					.duration(50)
+					.style("opacity", 0);
+			});
 
 		function tick() {
 			circle
