@@ -20,12 +20,36 @@
 
 <body>
 	<h1>Average Reported Happiness</h1>
+
+	<!-- year slider -->
 	<div id="selector_div">	
 		<input type="range" min="2008" max="2016" value="2016" step="1" class="slider" id="myRange">
 	</div>
+
 	<br>
+
+	<!-- happiness map -->
 	<div class="Map"> </div>
-	<div class="Cluster"> </div>
+
+	<!-- cluster map -->
+	<div class="Cluster">
+	
+		<!-- happiness slider -->
+		<section class="range-slider">
+			<span class="rangeValues"></span>
+			<input value="5" min="0" max="15" step="0.5" type="range">
+			<input value="10" min="0" max="15" step="0.5" type="range">
+		</section>
+
+		<!-- gdp slider -->
+		<section class="range-slider">
+			<span class="rangeValues"></span>
+			<input value="5" min="0" max="15" step="0.5" type="range">
+			<input value="10" min="0" max="15" step="0.5" type="range">
+		</section>
+
+
+	</div>
 </body>
 <script>
 
