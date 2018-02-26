@@ -14,6 +14,7 @@
 	<script src="js/cluster.js"></script>
 	<script src="js/cloropleth.js"></script>
 	<script src="js/selector.js"></script>
+	<script src="js/happiness_barchart.js"></script>
 
 
 </head>
@@ -22,7 +23,7 @@
 	<h1>Average Reported Happiness</h1>
 
 	<!-- year slider -->
-	<div id="selector_div">	
+	<div id="selector_div">
 		<input type="range" min="2008" max="2016" value="2016" step="1" class="slider" id="year_range" onchange="update_page(this.value)">
 	</div>
 
@@ -33,7 +34,7 @@
 
 	<!-- cluster map -->
 	<div class="Cluster">
-	
+
 		<div id="sidebar">
 			<!-- happiness slider -->
 			<section class="range-slider">
@@ -54,6 +55,9 @@
 
 
 	</div>
+
+	<div class="happyness_bar"> </div>
+
 </body>
 <script>
 
@@ -61,11 +65,13 @@
 	var defaultYear = selector();
 	cloropleth(defaultYear);
 	cluster(defaultYear);
+	happiness(defaultYear);
 
 	function update_page(year){
 		year = selector();
 		cloropleth(year);
 		cluster(year);
+		happiness(defaultYear);
 
 	}
 </script>
