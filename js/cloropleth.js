@@ -69,7 +69,7 @@ function cloropleth(year){
 				tip.transition()
 					.duration(200)
 					.style("opacity", .9);
-				tip.text( d.properties.name + "\n" + happiness.get(d.id) +  " /10 \n(Average)")
+				tip.text( d.properties.name + "\n" + round(happiness.get(d.id), 3) +  " /10 \n(Average)")
 					.style("left", (d3.event.pageX) + "px")
 					.style("top", (d3.event.pageY) + "px");
 			}
@@ -159,4 +159,9 @@ function cloropleth(year){
         .select(".domain")
         .remove();
   }
+}
+
+function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
 }

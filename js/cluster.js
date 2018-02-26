@@ -68,7 +68,7 @@ function cluster(year, filters){
 						.duration(200)
 						.style("opacity", .9);
 					
-					tip.text( d.code + "\n" + d.happiness +  " /10 \n(Average)")
+					tip.text( d.code + "\n" + round(d.happiness,3) +  " /10 \n(Average)")
 						.style("left", (d3.event.pageX) + "px")
 						.style("top", (d3.event.pageY) + "px");
 				}
@@ -88,3 +88,9 @@ function cluster(year, filters){
 	});
 
 }
+
+function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+}
+
