@@ -65,6 +65,7 @@
 	var year = selector();
 	cloropleth(year);
 	cluster(year, get_filters());
+	happiness(year);
 
 	// get the current filter values
 	function get_filters(){
@@ -92,6 +93,7 @@
 		year = selector();
 		cloropleth(year);
 		cluster(year, get_filters());
+		happiness(year);
 	}
 
 	function filter(id, value) {

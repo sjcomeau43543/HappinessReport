@@ -63,7 +63,7 @@ function happiness(year){
           tip.transition()
              .duration(200)
              .style("opacity", .9);
-             tip.text(function(d){return d.code + " " + d.happiness; })
+             tip.text( d.code + " " + d.happiness )
              .style("left", (d3.event.pageX) + "px")
              .style("top", (d3.event.pageY-28) + "px");})
 
