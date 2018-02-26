@@ -71,7 +71,10 @@ function happiness(year){
       .on("mouseout", function(d) {
         d3.select(this)
         .attr('fill', 'black');
-          tip.style("opacity", 0);});
+        tip.transition()
+					.duration(50)
+					.style("opacity", 0);
+        });
 
 
     // add the x Axis
