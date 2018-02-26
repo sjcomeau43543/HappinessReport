@@ -1,4 +1,4 @@
-function cluster(year){
+function cluster(year, filters){
 	d3.selectAll("#clusterSVG").remove();
 
 	var width = 700,
@@ -13,12 +13,12 @@ function cluster(year){
 	d3.csv("data/"+year+".csv", (countries) => {
 
 		countries.forEach(function(d) {
-		if(isNaN(d.happiness) || d.happiness === "-1.0" || d.happiness === "") { d.happiness = "unavailable"; } else {d.happiness = +d.happiness;}
-		if(isNaN(d.gdp) || d.gdp === "-1.0" || d.gdp === "") { d.gdp = "unavailable"; } else {d.gdp = +d.gdp}
-		if(isNaN(d.population) || d.population === "-1.0" || d.population === "") { d.population = "unavailable"; } else {d.population = +d.population;}
-		if(isNaN(d.inflation) || d.inflation === "-1.0" || d.inflation === "") { d.inflation = "unavailable"; } else {d.inflation = +d.inflation;}
-		if(isNaN(d.unemployment) || d.unemployment === "-1.0" || d.unemployment === "") { d.unemployment = "unavailable"; } else {d.unemployment = +d.unemployment;}
-		if(isNaN(d.alcohol) || d.alcohol === "-1.0" || d.alcohol === "") { d.alcohol_consumption = "unavailable"; } else {d.alcohol_consumption = +d.alcohol;}
+			if(isNaN(d.happiness) || d.happiness === "-1.0" || d.happiness === "") { d.happiness = "unavailable"; } else {d.happiness = +d.happiness;}
+			if(isNaN(d.gdp) || d.gdp === "-1.0" || d.gdp === "") { d.gdp = "unavailable"; } else {d.gdp = +d.gdp}
+			if(isNaN(d.population) || d.population === "-1.0" || d.population === "") { d.population = "unavailable"; } else {d.population = +d.population;}
+			if(isNaN(d.inflation) || d.inflation === "-1.0" || d.inflation === "") { d.inflation = "unavailable"; } else {d.inflation = +d.inflation;}
+			if(isNaN(d.unemployment) || d.unemployment === "-1.0" || d.unemployment === "") { d.unemployment = "unavailable"; } else {d.unemployment = +d.unemployment;}
+			if(isNaN(d.alcohol) || d.alcohol === "-1.0" || d.alcohol === "") { d.alcohol_consumption = "unavailable"; } else {d.alcohol_consumption = +d.alcohol;}
 
 
 		});
@@ -47,14 +47,19 @@ function cluster(year){
 			.append('g')
 			.attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
-	  var tip = d3.select("body")
+		var tip = d3.select("body")
 			.append("div")
 	  		.attr("class", "tooltip")
 	  		.style("opacity", 0);
 
 		var circle = svg.selectAll("circle")
 			.data(countries)
-			.enter().append("circle")
+			.enter()
+			.filter(function(d){
+				return (d.happiness <= filters.happiness.larger && d.happiness >= filters.happiness.smaller)
+				
+				})
+			.append("circle")
 			.attr("r", 15)
 			.style("fill", function(d) { return color(d.happiness); })
 			.on("mouseover", function(d) {
