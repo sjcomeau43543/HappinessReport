@@ -38,8 +38,8 @@
 			<!-- happiness slider -->
 			<section class="range-slider">
 				<span class="rangeValues"></span>
-				<input class="slider" value="0" min="0" max="10" step="0.25" type="range">
-				<input class="slider" value="10" min="0" max="10" step="0.25" type="range">
+				<input class="slider" id="happiness1" value="0" min="0" max="10" step="0.25" type="range" onchange="filter('happiness',this.value)">
+				<input class="slider" id="happiness2" value="10" min="0" max="10" step="0.25" type="range" onchange="filter('happiness',this.value)">
 			</section>
 			<p class = "sidebar_p"> happiness </p>
 
@@ -58,15 +58,40 @@
 <script>
 
 	//first page load
-	var defaultYear = selector();
-	cloropleth(defaultYear);
-	cluster(defaultYear);
+	var year = selector();
+	cloropleth(year);
+	cluster(year, get_filters());
+
+	// get the current filter values
+	function get_filters(){
+		var ids = ["happiness"];
+		var filters = {};
+
+		for(var i=0; i<ids.length; i++){
+			var range;
+			var one = document.getElementById(ids[i]+"1").value;
+			var two = document.getElementById(ids[i]+"2").value;
+
+			// figure out which oen is larger
+			if (one<two){
+				filters[ids[i]] = {"smaller":one, "larger":two};
+			} else if(one === two){
+				filters[ids[i]] = {"smaller":one, "larger":one};
+			} else {
+				filters[ids[i]] = {"smaller":two, "larger":one};
+			}
+		}
+		return filters;
+	}
 
 	function update_page(year){
 		year = selector();
 		cloropleth(year);
-		cluster(year);
+		cluster(year, get_filters());
+	}
 
+	function filter(id, value) {
+		cluster(year, "");
 	}
 </script>
 </html>
