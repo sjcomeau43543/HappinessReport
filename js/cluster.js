@@ -68,7 +68,7 @@ function cluster(year, filters){
 						.duration(200)
 						.style("opacity", .9);
 					
-					tip.text( d.code + "\n" + round(d.happiness,3) +  " /10 \n(Average)")
+					tip.text( d.code + "\n" + round(d.happiness,3) +  " / 10")
 						.style("left", (d3.event.pageX) + "px")
 						.style("top", (d3.event.pageY) + "px");
 				}

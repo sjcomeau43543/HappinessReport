@@ -69,7 +69,7 @@ function cloropleth(year){
 				tip.transition()
 					.duration(200)
 					.style("opacity", .9);
-				tip.text( d.properties.name + "\n" + round(happiness.get(d.id), 3) +  " /10 \n(Average)")
+				tip.text( d.properties.name + "\n" + round(happiness.get(d.id), 3) +  " / 10")
 					.style("left", (d3.event.pageX) + "px")
 					.style("top", (d3.event.pageY) + "px");
 			}
