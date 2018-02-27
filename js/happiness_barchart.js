@@ -59,7 +59,7 @@ function barChart(year){
         .attr("width", x.bandwidth())
         .attr("y", "0px") //function(d) { return y(d.happiness); })
         .attr("height", "80px") //function(d) { return height - y(d.happiness); })
-        .style("fill", function(d, i) {return color(i); })
+        .style("fill", function(d, i) {return color(d.happiness); })
 
       // tooltip on mouseover
       .on("mouseover", function(d) {
