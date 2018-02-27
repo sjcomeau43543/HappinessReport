@@ -39,8 +39,8 @@
 			<!-- happiness slider -->
 			<section class="range-slider">
 				<span class="rangeValues"></span>
-				<input class="slider" id="happiness1" value="0" min="0" max="10" step="0.25" type="range" onchange="filter('happiness',this.value)">
-				<input class="slider" id="happiness2" value="6" min="0" max="10" step="0.25" type="range" onchange="filter('happiness',this.value)">
+				<input class="slider" id="happiness1" value="0" min="0" max="10" step="0.25" type="range" onchange="filter()">
+				<input class="slider" id="happiness2" value="6" min="0" max="10" step="0.25" type="range" onchange="filter()">
 			</section>
 			<p class = "sidebar_p"> happiness </p>
 
@@ -108,7 +108,7 @@
 		happiness(year);
 	}
 
-	function filter(id, value) {
+	function filter() {
 		cluster(year, get_filters());
 	}
 </script>

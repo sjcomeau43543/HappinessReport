@@ -56,7 +56,12 @@ function cluster(year, filters){
 		var circle = svg.selectAll("circle")
 			.data(countries)
 			.enter()
-			.filter(function(d) { return (d.happiness < filters.happiness.larger) && (d.happiness > filters.happiness.smaller) })
+			.filter(function(d) { 
+				return (
+					(d.happiness != "unavailable") && (d.happiness < filters.happiness.larger) && (d.happiness > filters.happiness.smaller)
+
+
+					) })
 			.append("circle")
 			.attr("r", 15)
 			.style("fill", function(d) { return color(d.happiness); })
