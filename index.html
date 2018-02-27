@@ -15,7 +15,7 @@
 	<script src="js/cloropleth.js"></script>
 	<script src="js/selector.js"></script>
 	<script src="js/happiness_barchart.js"></script>
-
+	<script src="js/population_barchart.js"></script>
 
 </head>
 
@@ -57,6 +57,7 @@
 	</div>
 
 	<div class="happyness_bar"> </div>
+	<div class="population_bar"> </div>
 
 </body>
 <script>
@@ -65,7 +66,7 @@
 	var year = selector();
 	cloropleth(year);
 	cluster(year, get_filters());
-	happiness(year);
+	barChart(year);
 
 	// get the current filter values
 	function get_filters(){
@@ -105,7 +106,7 @@
 		year = selector();
 		cloropleth(year);
 		cluster(year, get_filters());
-		happiness(year);
+		barChart(year);
 	}
 
 	function filter(id, value) {
