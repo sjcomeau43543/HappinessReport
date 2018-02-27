@@ -5,10 +5,6 @@ var margin = {top: 5, right: 20, bottom: 10, left: 40},
     width = 960 - margin.left - margin.right,
     height = 125 - margin.left - margin.right;
 
-var color = d3.scaleThreshold()
-    .domain(d3.range(0, 10))
-    .range(d3.schemeBlues[9]);
-
 function round(value, precision) {
   var multiplier = Math.pow(10, precision || 0);
   return Math.round(value * multiplier) / multiplier;
@@ -17,6 +13,10 @@ function round(value, precision) {
 //Happiness Bar Chart Function
 function happinessBar(year){
   d3.selectAll("#happiness_bar").remove();
+
+  var color = d3.scaleThreshold()
+      .domain(d3.range(0, 10))
+      .range(d3.schemeBlues[9]);
 
   // set the ranges
   var x = d3.scaleBand()
@@ -76,7 +76,7 @@ function happinessBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.country + ": " + round(d.happiness, 3) + "/10" )
+            tip.text( d.code + " " +  d.country + ": " + round(d.happiness, 3) + "/10" )
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
@@ -102,6 +102,10 @@ function happinessBar(year){
 //Population Bar Chart Function
 function populationBar(year){
   d3.selectAll("#population_bar").remove();
+
+  var color = d3.scaleThreshold()
+      .domain(d3.range(0, 10))
+      .range(d3.schemeOranges[9]);
 
   // set the ranges
   var x = d3.scaleBand()
@@ -161,7 +165,7 @@ function populationBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.country + ": " + round(d.population, 3) + " people")
+            tip.text( d.code + " " +  d.country + ": " + round(d.population, 3) + " people")
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
@@ -187,6 +191,10 @@ function populationBar(year){
 // GDP bar chart function
 function gdpBar(year){
   d3.selectAll("#gdp_bar").remove();
+
+  var color = d3.scaleThreshold()
+      .domain(d3.range(0, 10))
+      .range(d3.schemeGreens[9]);
 
   // set the ranges
   var x = d3.scaleBand()
@@ -246,7 +254,7 @@ function gdpBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.country + ": " + round(d.gdp, 0) )
+            tip.text( d.code + " " +  d.country + ": " + round(d.gdp, 0) )
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
@@ -272,6 +280,10 @@ function gdpBar(year){
 // Inflation bar chart function
 function inflationBar(year){
   d3.selectAll("#inflation_bar").remove();
+
+  var color = d3.scaleThreshold()
+      .domain(d3.range(0, 10))
+      .range(d3.schemePurples[9]);
 
   // set the ranges
   var x = d3.scaleBand()
@@ -331,7 +343,7 @@ function inflationBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.country + ": " + round(d.inflation, 3) )
+            tip.text( d.code + " " +  d.country + ": " + round(d.inflation, 3) )
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
@@ -357,6 +369,10 @@ function inflationBar(year){
 // unemployment bar chart function
 function unemploymentBar(year){
   d3.selectAll("#unemployment_bar").remove();
+
+  var color = d3.scaleThreshold()
+      .domain(d3.range(0, 10))
+      .range(d3.schemeReds[9]);
 
   // set the ranges
   var x = d3.scaleBand()
@@ -416,7 +432,7 @@ function unemploymentBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.country + ": " + round(d.unemployment, 3) +"%" )
+            tip.text( d.code + " " +  d.country + ": " + round(d.unemployment, 3) +"%" )
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
@@ -442,6 +458,10 @@ function unemploymentBar(year){
 // alcohol bar chart function
 function alcoholBar(year){
   d3.selectAll("#alcohol_bar").remove();
+
+  var color = d3.scaleThreshold()
+      .domain(d3.range(0, 10))
+      .range(d3.schemeGreys[9]);
 
   // set the ranges
   var x = d3.scaleBand()
@@ -501,7 +521,7 @@ function alcoholBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.country + ": " + round(d.alcohol, 3) + " Liters Per Person Per Year")
+            tip.text( d.code + " " + d.country + ": " + round(d.alcohol, 3) + " Liters Per Person Per Year")
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
