@@ -14,6 +14,7 @@
 	<script src="js/cluster.js"></script>
 	<script src="js/cloropleth.js"></script>
 	<script src="js/selector.js"></script>
+	<script src="js/happiness_barchart.js"></script>
 
 
 </head>
@@ -22,7 +23,7 @@
 	<h1>Average Reported Happiness</h1>
 
 	<!-- year slider -->
-	<div id="selector_div">	
+	<div id="selector_div">
 		<input type="range" min="2008" max="2016" value="2016" step="1" class="slider" id="year_range" onchange="update_page(this.value)">
 	</div>
 
@@ -33,13 +34,13 @@
 
 	<!-- cluster map -->
 	<div class="Cluster">
-	
+
 		<div id="sidebar">
 			<!-- happiness slider -->
 			<section class="range-slider">
 				<span class="rangeValues"></span>
 				<input class="slider" id="happiness1" value="0" min="0" max="10" step="0.25" type="range" onchange="filter('happiness',this.value)">
-				<input class="slider" id="happiness2" value="10" min="0" max="10" step="0.25" type="range" onchange="filter('happiness',this.value)">
+				<input class="slider" id="happiness2" value="6" min="0" max="10" step="0.25" type="range" onchange="filter('happiness',this.value)">
 			</section>
 			<p class = "sidebar_p"> happiness </p>
 
@@ -54,6 +55,9 @@
 
 
 	</div>
+
+	<div class="happyness_bar"> </div>
+
 </body>
 <script>
 
@@ -61,6 +65,7 @@
 	var year = selector();
 	cloropleth(year);
 	cluster(year, get_filters());
+	happiness(year);
 
 	// get the current filter values
 	function get_filters(){
@@ -72,13 +77,25 @@
 			var one = document.getElementById(ids[i]+"1").value;
 			var two = document.getElementById(ids[i]+"2").value;
 
+			console.log(one);
+			console.log(two);
+
 			// figure out which oen is larger
-			if (one<two){
+			if (one*1.0 < two*1.0){
+				console.log("one < two");
 				filters[ids[i]] = {"smaller":one, "larger":two};
+				console.log(filters.happiness.smaller);
+				console.log(filters.happiness.larger);
 			} else if(one === two){
+				console.log("one === two");
 				filters[ids[i]] = {"smaller":one, "larger":one};
+				console.log(filters.happiness.smaller);
+				console.log(filters.happiness.larger);
 			} else {
+				console.log("else...");
 				filters[ids[i]] = {"smaller":two, "larger":one};
+				console.log(filters.happiness.smaller);
+				console.log(filters.happiness.larger);
 			}
 		}
 		return filters;
@@ -88,10 +105,11 @@
 		year = selector();
 		cloropleth(year);
 		cluster(year, get_filters());
+		happiness(year);
 	}
 
 	function filter(id, value) {
-		cluster(year, "");
+		cluster(year, get_filters());
 	}
 </script>
 </html>

@@ -5,7 +5,7 @@ function cloropleth(year){
       height = 600,
       centered;
 
-  var happyness = d3.map();
+  var happiness = d3.map();
 
   var projection = d3.geoMercator()
     .scale(width / 2 / Math.PI)
@@ -22,9 +22,9 @@ function cloropleth(year){
       .domain(d3.range(0, 9))
       .range(d3.schemeBlues[9]);
 
-  var svgHappyness;
+  var svghappiness;
 
-  svgHappyness = d3.select(".Map").append("svg")
+  svghappiness = d3.select(".Map").append("svg")
       .attr("id", "cloroplethMap")
       .attr("width", width)
       .style("border-style", "solid")
@@ -37,18 +37,18 @@ function cloropleth(year){
   		.attr("class", "tooltip")
   		.style("opacity", 0);
 
-  svgHappyness.append("rect")
+  svghappiness.append("rect")
       .attr("class", "background")
       .attr("width", width)
       .attr("height", height)
       .on("click", clicked);
 
-  var gCountry = svgHappyness.append("g");
+  var gCountry = svghappiness.append("g");
 
 
   d3.queue()
       .defer(d3.json, "https://enjalot.github.io/wwsd/data/world/world-110m.geojson")
-      .defer(d3.csv, "data/"+year+".csv", function(d) { happyness.set(d.code, d.happiness)})
+      .defer(d3.csv, "data/"+year+".csv", function(d) { happiness.set(d.code, d.happiness)})
       .await(ready);
 
 
@@ -61,15 +61,15 @@ function cloropleth(year){
         .data(world.features)
       .enter().append("path")
         .attr("d", path)
-        .attr("fill", function(d) { return colorPurples(happyness.get(d.id));})
+        .attr("fill", function(d) { return colorPurples(happiness.get(d.id));})
         .attr("stroke", "black")
         .on("click", clicked)
         .on("mouseover", function(d) {
-			if(happyness.get(d.id)){
+			if(happiness.get(d.id)){
 				tip.transition()
 					.duration(200)
 					.style("opacity", .9);
-				tip.text( d.properties.name + "\n" + happyness.get(d.id) +  " /10 \n(Average)")
+				tip.text( d.properties.name + "\n" + round(happiness.get(d.id), 3) +  " / 10")
 					.style("left", (d3.event.pageX) + "px")
 					.style("top", (d3.event.pageY) + "px");
 			}
@@ -126,7 +126,7 @@ function cloropleth(year){
 
   function makeLables(){
 
-    var colorLabel = svgHappyness.append("g")
+    var colorLabel = svghappiness.append("g")
         .attr("class", "key")
         .attr("transform", "translate(100,500)")
 
@@ -150,7 +150,7 @@ function cloropleth(year){
         .attr("fill", "#000")
         .attr("text-anchor", "start")
         .attr("font-weight", "bold")
-        .text("2016 Average reported Happyness");
+        .text(year + " Average reported happiness");
 
     colorLabel.call(d3.axisBottom(x)
         .tickSize(13)
@@ -159,4 +159,9 @@ function cloropleth(year){
         .select(".domain")
         .remove();
   }
+}
+
+function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
 }

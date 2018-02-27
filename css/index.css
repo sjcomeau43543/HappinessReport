@@ -22,9 +22,7 @@ div.tooltip {
 	white-space: pre;
 	position: absolute;
 	text-align: center;
-	width: 100px;
-	height: 60px;
-	padding: 2px;
+	padding: 5px;
 	font: 12px sans-serif;
 	background: white;
 	border: 0px;
