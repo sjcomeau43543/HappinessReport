@@ -26,6 +26,7 @@ with open("happiness-cantril-ladder.csv", "rb") as happiness:
 		if row[1] in countries.keys():
 			if row[2] in countries.get(row[1]).keys(): # we only want data 2008-2016
 				countries.get(row[1]).get(row[2])['happiness'] = float(row[3])
+				countries.get(row[1]).get(row[2])['country_name'] = row[0]
 
 # population, gdp, inflation, unemployment
 with open("GDP_I_Pop_Unemp.csv", "rb") as stats:
@@ -76,12 +77,13 @@ files = ['2008.csv', '2009.csv', '2010.csv', '2011.csv', '2012.csv', '2013.csv',
 for i in range(9):
 	with open(files[i], "wb") as new:
 		writer = csv.writer(new)
-		writer.writerow(['code', 'happiness', 'gdp', 'population', 'inflation', 'unemployment', 'alcohol'])
+		writer.writerow(['code', 'country', 'happiness', 'gdp', 'population', 'inflation', 'unemployment', 'alcohol'])
 		for key in countries.keys():
 			for year in countries.get(key):
 				if year == years[i]:
 					writer.writerow([
 						key,
+						countries.get(key).get(year).get('country_name'),
 						countries.get(key).get(year).get('happiness'),
 						countries.get(key).get(year).get('gdp'),
 						countries.get(key).get(year).get('population'),

@@ -1,10 +1,14 @@
-function happiness(year){
+function barChart(year){
   d3.selectAll("#happiness_bar").remove();
 
   // set the dimensions and margins of the graph
   var margin = {top: 20, right: 20, bottom: 30, left: 40},
       width = 960 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+      height = 125 - margin.top - margin.bottom;
+
+  var color = d3.scaleThreshold()
+    .domain(d3.range(0, 10))
+    .range(d3.schemeBlues[9]);
 
   // set the ranges
   var x = d3.scaleBand()
@@ -34,14 +38,12 @@ function happiness(year){
     if (error) throw error;
 
     data.filter(function(d){ if(d.happiness > 0){return d.happiness;}})
-    // format the data
-    data.forEach(function(d) {
-      d.happiness = +d.happiness;
-    });
+      // format the data
+      data.forEach(function(d) {
+        d.happiness = +d.happiness;
+      });
 
-    data.sort(function(x, y){
-        return d3.descending(x.happiness, y.happiness);})
-
+    data.sort(function(x, y){return d3.descending(x.happiness, y.happiness);})
 
     // Scale the range of the data in the domains
     x.domain(data.map(function(d, i) { if(d.happiness > 0){ return d.code; }}));
@@ -55,17 +57,20 @@ function happiness(year){
         .attr("class", "bar")
         .attr("x", function(d) { return x(d.code); })
         .attr("width", x.bandwidth())
-        .attr("y", function(d) { return y(d.happiness); })
-        .attr("height", function(d) { return height - y(d.happiness); })
-        .on("mouseover", function(d) {
-          d3.select(this)
-          .attr('fill', 'blue');
-          tip.transition()
-             .duration(200)
-             .style("opacity", .9);
-             tip.text( d.code + " " + d.happiness )
-             .style("left", (d3.event.pageX) + "px")
-             .style("top", (d3.event.pageY-28) + "px");})
+        .attr("y", "0px") //function(d) { return y(d.happiness); })
+        .attr("height", "80px") //function(d) { return height - y(d.happiness); })
+        .style("fill", function(d, i) {return color(d.happiness); })
+
+      // tooltip on mouseover
+      .on("mouseover", function(d) {
+        d3.select(this)
+        .attr('fill', 'blue');
+        tip.transition()
+            .duration(200)
+            .style("opacity", .9);
+            tip.text( d.code + " " + round(d.happiness, 3) )
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY-28) + "px");})
 
       // fade out tooltip on mouse out
       .on("mouseout", function(d) {
@@ -76,16 +81,17 @@ function happiness(year){
 					.style("opacity", 0);
         });
 
-
-    // add the x Axis
-    svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
-        .text('happyness_bar');
-
-    // add the y Axis
-    svg.append("g")
-        .call(d3.axisLeft(y));
+    svg.append("text")
+      .attr("x", "-40px")
+      .attr("y", "-10")
+      .attr("transform", "rotate(-90)")
+      .style("text-anchor", "middle")
+      .text("Happiness");
 
   });
+}
+
+function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
 }
