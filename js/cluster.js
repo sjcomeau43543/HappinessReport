@@ -22,19 +22,20 @@ function cluster(year, filters){
 
 
 		});
-		
+
+		console.log(countries);
 
 		var forceCollide = d3.forceCollide()
 			.radius(function(d) { return 15 + 1.5; })
-			.iterations(1);
+			.iterations(2);
 
-		var force = d3.forceSimulation()
-			.nodes(countries)
-			.force("center", d3.forceCenter())
+		var force = d3.forceSimulation(countries)
+			.force("center", d3.forceCenter(6))
 			.force("collide", forceCollide)
-			.force("gravity", d3.forceManyBody(30))
-			.force("x", d3.forceX().strength(.7))
-			.force("y", d3.forceY().strength(.7))
+			.force("gravity", d3.forceManyBody())
+			.force("charge", d3.forceManyBody().strength(2))
+			.force("x", d3.forceX().strength(.11))
+			.force("y", d3.forceY().strength(.11))
 			.on("tick", tick);
 
 		var svg = d3.select(".Cluster").append("svg")
@@ -57,7 +58,7 @@ function cluster(year, filters){
 			.enter()
 			.filter(function(d){
 				return (d.happiness <= filters.happiness.larger && d.happiness >= filters.happiness.smaller)
-				
+
 				})
 			.append("circle")
 			.attr("r", 15)
@@ -67,7 +68,7 @@ function cluster(year, filters){
 					tip.transition()
 						.duration(200)
 						.style("opacity", .9);
-					
+
 					tip.text( d.code + "\n" + round(d.happiness,3) +  " / 10")
 						.style("left", (d3.event.pageX) + "px")
 						.style("top", (d3.event.pageY) + "px");
@@ -79,10 +80,21 @@ function cluster(year, filters){
 					.style("opacity", 0);
 			});
 
+		var first_tick = 0;
+
 		function tick() {
+			if (first_tick < 1){
+				circle
+					// .attr("cx", function(d) { return d.x = d.x*-1.1*Math.pow(8-d.happiness,2); })
+					// .attr("cy", function(d) { return d.y = d.y*-1.1*Math.pow(8-d.happiness,2); });
+					.attr("cx", function(d) { return d.x = (d.happiness); })
+					.attr("cy", function(d) { return d.y = (d.happiness); });
+					first_tick += 1;
+			}
 			circle
 				.attr("cx", function(d) { return d.x; })
 				.attr("cy", function(d) { return d.y; });
+
 		}
 
 	});
@@ -93,4 +105,3 @@ function round(value, precision) {
     var multiplier = Math.pow(10, precision || 0);
     return Math.round(value * multiplier) / multiplier;
 }
-
