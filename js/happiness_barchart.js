@@ -186,7 +186,7 @@ function populationBar(year){
 
 // GDP bar chart function
 function gdpBar(year){
-  d3.selectAll("#gdpBar_bar").remove();
+  d3.selectAll("#gdp_bar").remove();
 
   // set the ranges
   var x = d3.scaleBand()
