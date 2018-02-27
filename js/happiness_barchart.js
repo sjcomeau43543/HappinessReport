@@ -91,9 +91,10 @@ function happinessBar(year){
 
     svg.append("text")
       .attr("x", "-37px")
-      .attr("y", "-10")
+      .attr("y", "-8")
       .attr("transform", "rotate(-90)")
       .style("text-anchor", "middle")
+      .style("font-size", "12px")
       .text("Happiness");
 
   });
@@ -180,9 +181,10 @@ function populationBar(year){
 
     svg.append("text")
       .attr("x", "-37px")
-      .attr("y", "-10")
+      .attr("y", "-8")
       .attr("transform", "rotate(-90)")
       .style("text-anchor", "middle")
+      .style("font-size", "12px")
       .text("Population");
 
   });
@@ -269,9 +271,10 @@ function gdpBar(year){
 
     svg.append("text")
       .attr("x", "-37px")
-      .attr("y", "-10")
+      .attr("y", "-8")
       .attr("transform", "rotate(-90)")
       .style("text-anchor", "middle")
+      .style("font-size", "12px")
       .text("GDP");
 
   });
@@ -358,9 +361,10 @@ function inflationBar(year){
 
     svg.append("text")
       .attr("x", "-37px")
-      .attr("y", "-10")
+      .attr("y", "-8")
       .attr("transform", "rotate(-90)")
       .style("text-anchor", "middle")
+      .style("font-size", "12px")
       .text("Inflation");
 
   });
@@ -447,10 +451,11 @@ function unemploymentBar(year){
 
     svg.append("text")
       .attr("x", "-37px")
-      .attr("y", "-10")
+      .attr("y", "-8")
       .attr("transform", "rotate(-90)")
+      .style("font-size", "12px")
       .style("text-anchor", "middle")
-      .text("Unemploy.");
+      .text("Unemployment");
 
   });
 }
@@ -517,7 +522,7 @@ function alcoholBar(year){
       // tooltip on mouseover
       .on("mouseover", function(d) {
         d3.select(this)
-        .attr('fill', 'blue');
+         //.attr('fill', 'blue');
         tip.transition()
             .duration(200)
             .style("opacity", .9);
@@ -528,7 +533,7 @@ function alcoholBar(year){
       // fade out tooltip on mouse out
       .on("mouseout", function(d) {
         d3.select(this)
-        .attr('fill', 'black');
+          //.attr('fill', 'black');
         tip.transition()
 					.duration(50)
 					.style("opacity", 0);
@@ -536,8 +541,9 @@ function alcoholBar(year){
 
     svg.append("text")
       .attr("x", "-37px")
-      .attr("y", "-10")
+      .attr("y", "-8")
       .attr("transform", "rotate(-90)")
+      .style("font-size", "12px")
       .style("text-anchor", "middle")
       .text("Alcohol");
 
