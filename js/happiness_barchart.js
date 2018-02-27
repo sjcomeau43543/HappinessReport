@@ -76,7 +76,7 @@ function happinessBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.code + " " + round(d.happiness, 3) )
+            tip.text( d.country + ": " + round(d.happiness, 3) + "/10" )
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
@@ -152,7 +152,7 @@ function populationBar(year){
         .attr("width", x.bandwidth())
         .attr("y", "0px") //function(d) { return y(d.happiness); })
         .attr("height", "75") //function(d) { return height - y(d.happiness); })
-        .style("fill", function(d, i) {return color(d.population); })
+        .style("fill", function(d, i) {return color(Math.log(d.population - 300000)/Math.log(18)); })
 
       // tooltip on mouseover
       .on("mouseover", function(d) {
@@ -161,7 +161,7 @@ function populationBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.code + " " + round(d.population, 3) )
+            tip.text( d.country + ": " + round(d.population, 3) + " people")
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
@@ -237,7 +237,7 @@ function gdpBar(year){
         .attr("width", x.bandwidth())
         .attr("y", "0px") //function(d) { return y(d.happiness); })
         .attr("height", "75") //function(d) { return height - y(d.happiness); })
-        .style("fill", function(d, i) {return color(d.gdp); })
+        .style("fill", function(d, i) {return color(Math.log(d.gdp - 150000000)/Math.log(100)); })
 
       // tooltip on mouseover
       .on("mouseover", function(d) {
@@ -246,7 +246,7 @@ function gdpBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.code + " " + round(d.gdp, 3) )
+            tip.text( d.country + ": " + round(d.gdp, 0) )
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
@@ -322,7 +322,7 @@ function inflationBar(year){
         .attr("width", x.bandwidth())
         .attr("y", "0px") //function(d) { return y(d.happiness); })
         .attr("height", "75") //function(d) { return height - y(d.happiness); })
-        .style("fill", function(d, i) {return color(d.inflation); })
+        .style("fill", function(d, i) {return color(Math.log(d.inflation-50)/Math.log(3)); })
 
       // tooltip on mouseover
       .on("mouseover", function(d) {
@@ -331,7 +331,7 @@ function inflationBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.code + " " + round(d.inflation, 3) )
+            tip.text( d.country + ": " + round(d.inflation, 3) )
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
@@ -416,7 +416,7 @@ function unemploymentBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.code + " " + round(d.unemployment, 3) )
+            tip.text( d.country + ": " + round(d.unemployment, 3) +"%" )
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
@@ -501,7 +501,7 @@ function alcoholBar(year){
         tip.transition()
             .duration(200)
             .style("opacity", .9);
-            tip.text( d.code + " " + round(d.alcohol, 3) )
+            tip.text( d.country + ": " + round(d.alcohol, 3) + " Liters Per Person Per Year")
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY-28) + "px");})
 
