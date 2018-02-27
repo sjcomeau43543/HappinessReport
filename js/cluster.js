@@ -12,6 +12,7 @@ function cluster(year, filters){
 
 	d3.csv("data/"+year+".csv", (countries) => {
 
+
 		countries.forEach(function(d) {
 			if(isNaN(d.happiness) || d.happiness === "-1.0" || d.happiness === "") { d.happiness = "unavailable"; } else {d.happiness = +d.happiness;}
 			if(isNaN(d.gdp) || d.gdp === "-1.0" || d.gdp === "") { d.gdp = "unavailable"; } else {d.gdp = +d.gdp}
@@ -23,7 +24,6 @@ function cluster(year, filters){
 
 		});
 
-		console.log(countries);
 
 		var forceCollide = d3.forceCollide()
 			.radius(function(d) { return 15 + 1.5; })
@@ -33,7 +33,7 @@ function cluster(year, filters){
 			.force("center", d3.forceCenter(6))
 			.force("collide", forceCollide)
 			.force("gravity", d3.forceManyBody())
-			.force("charge", d3.forceManyBody().strength(2))
+			.force("charge", d3.forceManyBody().strength(1).distanceMin(-1).distanceMax(-1))
 			.force("x", d3.forceX().strength(.11))
 			.force("y", d3.forceY().strength(.11))
 			.on("tick", tick);
@@ -56,10 +56,7 @@ function cluster(year, filters){
 		var circle = svg.selectAll("circle")
 			.data(countries)
 			.enter()
-			.filter(function(d){
-				return (d.happiness <= filters.happiness.larger && d.happiness >= filters.happiness.smaller)
-
-				})
+			.filter(function(d) { return (d.happiness < filters.happiness.larger) && (d.happiness > filters.happiness.smaller) })
 			.append("circle")
 			.attr("r", 15)
 			.style("fill", function(d) { return color(d.happiness); })
