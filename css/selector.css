@@ -35,10 +35,14 @@
 }
 
 
+.sidebarlabel {
+	top-margin: 0px;
+}
+
 #sidebar {
 	width:230px;
-	/* float:left; */
-  display:inline-block;
+	/* float:left; */ 
+	display:inline-block;
 	padding: 15px;
 }
 

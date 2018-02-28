@@ -40,51 +40,45 @@
 		<div id="sidebar">
 			<!-- happiness slider -->
 			<section class="range-slider">
-				<span id="happiness0"></span>
+				<p id="happiness0" class="sidebarlabel"></p>
 				<input class="slider" id="happiness1" value="2.5" min="2.5" max="10" step="0.25" type="range" onchange="filter()">
 				<input class="slider" id="happiness2" value="10" min="2.5" max="10" step="0.25" type="range" onchange="filter()">
 			</section>
-			<p class = "sidebar_p"> happiness </p>
 
 			<!-- gdp slider 100,000-10,000,000,000,000,000 -->
 			<section class="range-slider">
-				<span id="gdp0"></span>
+				<p id="gdp0" class="sidebarlabel"></p>
 				<input class="slider" id="gdp1" value="7" min="7" max="16" step="1" type="range" onchange="filter()">
 				<input class="slider" id="gdp2" value="16" min="7" max="16" step="1" type="range" onchange="filter()">
 			</section>
-			<p class = "sidebar_p"> gdp </p>
 
 			<!-- population slider 300000-2000000 -->
 			<section class="range-slider">
-				<span id="population0"></span>
-				<input class="slider" id="population1" value="7" min="7" max="16" step="1" type="range" onchange="filter()">
-				<input class="slider" id="population2" value="16" min="7" max="16" step="1" type="range" onchange="filter()">
+				<p id="population0" class="sidebarlabel"></p>
+				<input class="slider" id="population1" value="120" min="120" max="141" step="1" type="range" onchange="filter()">
+				<input class="slider" id="population2" value="141" min="120" max="141" step="1" type="range" onchange="filter()">
 			</section>
-			<p class = "sidebar_p"> population </p>
 
 			<!-- inflation slider 50-20,000,000,000,000 -->
 			<section class="range-slider">
-				<span id="inflation0"></span>
-				<input class="slider" id="inflation1" value="7" min="7" max="16" step="1" type="range" onchange="filter()">
-				<input class="slider" id="inflation2" value="16" min="7" max="16" step="1" type="range" onchange="filter()">
+				<p id="inflation0" class="sidebarlabel"></p>
+				<input class="slider" id="inflation1" value="5" min="5" max="41" step="1" type="range" onchange="filter()">
+				<input class="slider" id="inflation2" value="41" min="5" max="41" step="1" type="range" onchange="filter()">
 			</section>
-			<p class = "sidebar_p"> inflation </p>
 
 			<!-- unemployement slider 0-40 -->
 			<section class="range-slider">
-				<span id="unemployment0"></span>
+				<p id="unemployment0" class="sidebarlabel"></p>
 				<input class="slider" id="unemployment1" value="0" min="0" max="40" step="1" type="range" onchange="filter()">
 				<input class="slider" id="unemployment2" value="40" min="0" max="40" step="1" type="range" onchange="filter()">
 			</section>
-			<p class = "sidebar_p"> unemployment </p>
 
 			<!-- alcohol slider 0-35 -->
 			<section class="range-slider">
-				<span id="alcohol0"></span>
+				<p id="alcohol0" class="sidebarlabel"></p>
 				<input class="slider" id="alcohol1" value="0" min="0" max="35" step="1" type="range" onchange="filter()">
 				<input class="slider" id="alcohol2" value="35" min="0" max="35" step="1" type="range" onchange="filter()">
 			</section>
-			<p class = "sidebar_p"> alcohol </p>
 		</div>
 		<svg id="clusterSVG"></svg>
 		</span>
@@ -122,7 +116,7 @@
 
 	// get the current filter values
 	function get_filters(){
-		var ids = ["happiness", "gdp"];
+		var ids = ["happiness", "gdp", "population", "inflation", "unemployment", "alcohol"];
 		var filters = {};
 
 		for(var i=0; i<ids.length; i++){
@@ -133,12 +127,26 @@
 				one = Math.pow(10, power1);
 				two = Math.pow(10, power2);
 
-				document.getElementById(ids[i]+"0").innerHTML = "1x10<sup>" + power1 + "</sup>-1x10<sup>" + power2 + "</sup>";
+				document.getElementById(ids[i]+"0").innerHTML = "gdp: 10<sup>" + power1 + "</sup>-10<sup>" + power2 + "</sup>";
+			} else if(ids[i] == "population") {
+				var power1 = document.getElementById(ids[i]+"1").value;
+				var power2 = document.getElementById(ids[i]+"2").value;
+				one = Math.floor(3* Math.pow(1.1, power1));
+				two = Math.floor(3* Math.pow(1.1, power2));
+
+				document.getElementById(ids[i]+"0").innerHTML = "population: " + one + "-" + two;
+			} else if(ids[i] == "inflation") {
+				var power1 = document.getElementById(ids[i]+"1").value;
+				var power2 = document.getElementById(ids[i]+"2").value;
+				one = Math.pow(2, power1);
+				two = Math.pow(2, power2);
+
+				document.getElementById(ids[i]+"0").innerHTML = "inflation: 2<sup>" + power1 + "</sup>-2<sup>" + power2 + "</sup>";
 			} else {
 				one = document.getElementById(ids[i]+"1").value;
 				two = document.getElementById(ids[i]+"2").value;
 
-				document.getElementById(ids[i]+"0").innerHTML = one + "-" + two;
+				document.getElementById(ids[i]+"0").innerHTML = ids[i] + ": " + one + "-" + two;
 			}
 
 			// figure out which oen is larger
