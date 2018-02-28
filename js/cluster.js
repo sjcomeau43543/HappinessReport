@@ -1,5 +1,6 @@
 function cluster(year, filters){
 	d3.selectAll("#clusterSVG").selectAll("*").remove();
+	console.log(filters);
 
 	var width = 700,
     	height = 500;
@@ -57,9 +58,19 @@ function cluster(year, filters){
 			.data(countries)
 			.enter()
 			.filter(function(d) {
+				
 				return (
-					(d.happiness != "unavailable") && (d.happiness <= filters.happiness.larger) && (d.happiness >= filters.happiness.smaller) &&
-					(d.gdp <= filters.gdp.larger) && (d.gdp >= filters.gdp.smaller)
+					(d.happiness != "unavailable") && (d.happiness <= filters.happiness.larger) && (d.happiness >= filters.happiness.smaller) 
+					&&
+					((d.gdp == "unavailable") || (Math.floor(d.gdp) <= filters.gdp.larger) && (Math.floor(d.gdp) >= filters.gdp.smaller))
+					&&
+					((d.population == "unavailable") || (Math.floor(d.population) <= filters.population.larger) && (Math.floor(d.population) >= filters.population.smaller))
+					&&
+					((d.inflation == "unavailable") || (Math.floor(d.inflation) <= filters.inflation.larger) && (Math.floor(d.inflation) >= filters.inflation.smaller))
+					&&
+					((d.unemployment == "unavailable") || (Math.floor(d.unemployment) <= filters.unemployment.larger) && (Math.floor(d.unemployment) >= filters.unemployment.smaller))
+					&&
+					((d.alcohol == "unavailable") || (Math.floor(d.alcohol) <= filters.alcohol.larger) && (Math.floor(d.alcohol) >= filters.alcohol.smaller))
 
 
 					) })

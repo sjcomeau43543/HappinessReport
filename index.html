@@ -55,15 +55,15 @@
 			<!-- population slider 300000-2000000 -->
 			<section class="range-slider">
 				<p id="population0" class="sidebarlabel"></p>
-				<input class="slider" id="population1" value="120" min="120" max="141" step="1" type="range" onchange="filter()">
-				<input class="slider" id="population2" value="141" min="120" max="141" step="1" type="range" onchange="filter()">
+				<input class="slider" id="population1" value="16" min="16" max="29" step="1" type="range" onchange="filter()">
+				<input class="slider" id="population2" value="29" min="16" max="29" step="1" type="range" onchange="filter()">
 			</section>
 
 			<!-- inflation slider 50-20,000,000,000,000 -->
 			<section class="range-slider">
 				<p id="inflation0" class="sidebarlabel"></p>
-				<input class="slider" id="inflation1" value="5" min="5" max="41" step="1" type="range" onchange="filter()">
-				<input class="slider" id="inflation2" value="41" min="5" max="41" step="1" type="range" onchange="filter()">
+				<input class="slider" id="inflation1" value="6" min="6" max="35" step="1" type="range" onchange="filter()">
+				<input class="slider" id="inflation2" value="35" min="6" max="35" step="1" type="range" onchange="filter()">
 			</section>
 
 			<!-- unemployement slider 0-40 -->
@@ -127,26 +127,36 @@
 				one = Math.pow(10, power1);
 				two = Math.pow(10, power2);
 
-				document.getElementById(ids[i]+"0").innerHTML = "gdp: 10<sup>" + power1 + "</sup>-10<sup>" + power2 + "</sup>";
+				document.getElementById(ids[i]+"0").innerHTML = "gdp($): 10<sup>" + power1 + "</sup>-10<sup>" + power2 + "</sup>";
 			} else if(ids[i] == "population") {
 				var power1 = document.getElementById(ids[i]+"1").value;
 				var power2 = document.getElementById(ids[i]+"2").value;
-				one = Math.floor(3* Math.pow(1.1, power1));
-				two = Math.floor(3* Math.pow(1.1, power2));
+				one = Math.floor(3* Math.pow(2, power1));
+				two = Math.floor(3* Math.pow(2, power2));
 
 				document.getElementById(ids[i]+"0").innerHTML = "population: " + one + "-" + two;
 			} else if(ids[i] == "inflation") {
 				var power1 = document.getElementById(ids[i]+"1").value;
 				var power2 = document.getElementById(ids[i]+"2").value;
-				one = Math.pow(2, power1);
-				two = Math.pow(2, power2);
+				one = Math.floor(5* Math.pow(1.4, power1));
+				two = Math.floor(5* Math.pow(1.4, power2));
 
-				document.getElementById(ids[i]+"0").innerHTML = "inflation: 2<sup>" + power1 + "</sup>-2<sup>" + power2 + "</sup>";
-			} else {
+				document.getElementById(ids[i]+"0").innerHTML = "inflation(index): " + one + "-" + two;
+			} else if (ids[i] == "alcohol"){
+				one = document.getElementById(ids[i]+"1").value;
+				two = document.getElementById(ids[i]+"2").value;
+
+				document.getElementById(ids[i]+"0").innerHTML = ids[i] + "(liters/year): " + one + "-" + two;
+			} else if (ids[i] == "happiness"){
 				one = document.getElementById(ids[i]+"1").value;
 				two = document.getElementById(ids[i]+"2").value;
 
 				document.getElementById(ids[i]+"0").innerHTML = ids[i] + ": " + one + "-" + two;
+			} else {
+				one = document.getElementById(ids[i]+"1").value;
+				two = document.getElementById(ids[i]+"2").value;
+
+				document.getElementById(ids[i]+"0").innerHTML = ids[i] + "(%): " + one + "-" + two;
 			}
 
 			// figure out which oen is larger
