@@ -15,25 +15,27 @@
 	<script src="js/cloropleth.js"></script>
 	<script src="js/selector.js"></script>
 	<script src="js/happiness_barchart.js"></script>
-	<script src="js/population_barchart.js"></script>
 
 </head>
 
-<body>
-	<h1>Average Reported Happiness</h1>
+<body >
+	<h1>Visualizing Happiness Around The World</h1>
 
 	<!-- year slider -->
-	<div id="selector_div">
+	<div align="center">
+	<div id="selector_div" align="center">
+		<p>Selected Year: <span id="sliderVal"></span></p>
 		<input type="range" min="2008" max="2016" value="2016" step="1" class="slider" id="year_range" onchange="update_page(this.value)">
 	</div>
+</div>
 
 	<br>
 
 	<!-- happiness map -->
-	<div class="Map"> </div>
+	<div class="Map" align="center"> </div>
 
 	<!-- cluster map -->
-	<div class="Cluster">
+	<div class="Cluster" align="center">
 
 		<div id="sidebar">
 			<!-- happiness slider -->
@@ -54,20 +56,37 @@
 		</div>
 		<svg id="clusterSVG"></svg>
 
-
 	</div>
 
-	<div class="happyness_bar"> </div>
-	<div class="population_bar"> </div>
+	<div class="bar_holder">
+		<div class="happyness_bar" align="center"> </div>
+		<div class="population_bar" align="center"> </div>
+		<div class="gdp_bar" align="center"> </div>
+		<div class="inflation_bar" align="center"> </div>
+		<div class="unemployment_bar" align="center"> </div>
+		<div class="alcohol_bar" align="center"> </div>
+	</div>
 
 </body>
 <script>
+	var slider = document.getElementById("year_range");
+	var output = document.getElementById("sliderVal");
+	output.innerHTML = slider.value;
 
-	//first page load
+	slider.oninput = function() {
+  	output.innerHTML = this.value;
+	}
+</script>
+<script>
 	var year = selector();
 	cloropleth(year);
 	cluster(year, get_filters());
-	barChart(year);
+	happinessBar(year);
+	populationBar(year);
+	gdpBar(year);
+	inflationBar(year);
+	unemploymentBar(year);
+	alcoholBar(year);
 
 	// get the current filter values
 	function get_filters(){
@@ -106,7 +125,12 @@
 		year = selector();
 		cloropleth(year);
 		cluster(year, get_filters());
-		barChart(year);
+		happinessBar(year);
+		populationBar(year);
+		gdpBar(year);
+		inflationBar(year);
+		unemploymentBar(year);
+		alcoholBar(year);
 	}
 
 	function filter() {

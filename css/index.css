@@ -8,6 +8,13 @@
 	fill: none;
 }
 
+h1 {
+	padding: 1em;
+	clear: left;
+  background-color: #72BCD4;
+	text-align: center;
+}
+
 #countries .activeCount {
 	stroke-width: 3;
 	stroke: #000;
