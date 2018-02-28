@@ -38,20 +38,21 @@
 		<div id="sidebar">
 			<!-- happiness slider -->
 			<section class="range-slider">
-				<span class="rangeValues"></span>
-				<input class="slider" id="happiness1" value="0" min="0" max="10" step="0.25" type="range" onchange="filter()">
-				<input class="slider" id="happiness2" value="6" min="0" max="10" step="0.25" type="range" onchange="filter()">
+				<span id="happiness0"></span>
+				<input class="slider" id="happiness1" value="2.5" min="2.5" max="10" step="0.25" type="range" onchange="filter()">
+				<input class="slider" id="happiness2" value="10" min="2.5" max="10" step="0.25" type="range" onchange="filter()">
 			</section>
 			<p class = "sidebar_p"> happiness </p>
 
-			<!-- gdp slider -->
+			<!-- gdp slider 100,000-10,000,000,000,000,000 -->
 			<section class="range-slider">
-				<span class="rangeValues"></span>
-				<input class="slider" value="5" min="0" max="15" step="0.5" type="range">
-				<input class="slider" value="10" min="0" max="15" step="0.5" type="range">
+				<span id="gdp0"></span>
+				<input class="slider" id="gdp1" value="7" min="7" max="16" step="1" type="range" onchange="filter()">
+				<input class="slider" id="gdp2" value="16" min="7" max="16" step="1" type="range" onchange="filter()">
 			</section>
 			<p class = "sidebar_p"> gdp </p>
 		</div>
+		<svg id="clusterSVG"></svg>
 
 
 	</div>
@@ -70,33 +71,32 @@
 
 	// get the current filter values
 	function get_filters(){
-		var ids = ["happiness"];
+		var ids = ["happiness", "gdp"];
 		var filters = {};
 
 		for(var i=0; i<ids.length; i++){
-			var range;
-			var one = document.getElementById(ids[i]+"1").value;
-			var two = document.getElementById(ids[i]+"2").value;
-
-			console.log(one);
-			console.log(two);
+			var one, two;
+			if(ids[i] == "gdp"){
+				var power1 = document.getElementById(ids[i]+"1").value;
+				var power2 = document.getElementById(ids[i]+"2").value;
+				one = Math.pow(10, power1);
+				two = Math.pow(10, power2);
+				
+				document.getElementById(ids[i]+"0").innerHTML = "1x10<sup>" + power1 + "</sup>-1x10<sup>" + power2 + "</sup>";
+			} else {
+				one = document.getElementById(ids[i]+"1").value;
+				two = document.getElementById(ids[i]+"2").value;
+				
+				document.getElementById(ids[i]+"0").innerHTML = one + "-" + two;
+			}
 
 			// figure out which oen is larger
 			if (one*1.0 < two*1.0){
-				console.log("one < two");
 				filters[ids[i]] = {"smaller":one, "larger":two};
-				console.log(filters.happiness.smaller);
-				console.log(filters.happiness.larger);
 			} else if(one === two){
-				console.log("one === two");
 				filters[ids[i]] = {"smaller":one, "larger":one};
-				console.log(filters.happiness.smaller);
-				console.log(filters.happiness.larger);
 			} else {
-				console.log("else...");
 				filters[ids[i]] = {"smaller":two, "larger":one};
-				console.log(filters.happiness.smaller);
-				console.log(filters.happiness.larger);
 			}
 		}
 		return filters;

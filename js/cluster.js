@@ -1,5 +1,5 @@
 function cluster(year, filters){
-	d3.selectAll("#clusterSVG").remove();
+	d3.selectAll("#clusterSVG").selectAll("*").remove();
 
 	var width = 700,
     	height = 500;
@@ -38,8 +38,7 @@ function cluster(year, filters){
 			.force("y", d3.forceY().strength(.11))
 			.on("tick", tick);
 
-		var svg = d3.select(".Cluster").append("svg")
-			.attr("id", "clusterSVG")
+		var svg = d3.select("#clusterSVG")
 			.attr("style", "float:left")
 			.attr("width", width)
 			.attr("height", height)
@@ -56,9 +55,10 @@ function cluster(year, filters){
 		var circle = svg.selectAll("circle")
 			.data(countries)
 			.enter()
-			.filter(function(d) { 
+			.filter(function(d) {
 				return (
-					(d.happiness != "unavailable") && (d.happiness < filters.happiness.larger) && (d.happiness > filters.happiness.smaller)
+					(d.happiness != "unavailable") && (d.happiness <= filters.happiness.larger) && (d.happiness >= filters.happiness.smaller) &&
+					(d.gdp <= filters.gdp.larger) && (d.gdp >= filters.gdp.smaller)
 
 
 					) })
