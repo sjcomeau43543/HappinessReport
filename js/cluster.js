@@ -39,7 +39,8 @@ function cluster(year, filters){
 			.on("tick", tick);
 
 		var svg = d3.select("#clusterSVG")
-			.attr("style", "float:left")
+			//.attr("style", "float:left")
+			.style('display', 'inline-block')
 			.attr("width", width)
 			.attr("height", height)
 			.style("border-style", "solid")
@@ -71,7 +72,7 @@ function cluster(year, filters){
 						.duration(200)
 						.style("opacity", .9);
 
-					tip.text( d.code + "\n" + round(d.happiness,3) +  " / 10")
+					tip.text( d.country + "\n" + round(d.happiness,3) +  " / 10")
 						.style("left", (d3.event.pageX) + "px")
 						.style("top", (d3.event.pageY) + "px");
 				}

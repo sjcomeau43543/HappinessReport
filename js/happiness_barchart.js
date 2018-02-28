@@ -62,7 +62,7 @@ function happinessBar(year){
         .data(data)
       .enter().append("rect")
         .filter(function(d) { return d.happiness > 0 })
-        .attr("class", "bar")
+        .attr("class", function(d){return "bar " + d.code})
         .attr("x", function(d) { return x(d.code); })
         .attr("width", x.bandwidth())
         .attr("y", "0px") //function(d) { return y(d.happiness); })
@@ -71,6 +71,9 @@ function happinessBar(year){
 
       // tooltip on mouseover
       .on("mouseover", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', .2);
+
         d3.select(this)
         .attr('fill', 'blue');
         tip.transition()
@@ -82,6 +85,9 @@ function happinessBar(year){
 
       // fade out tooltip on mouse out
       .on("mouseout", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', 1);
+
         d3.select(this)
         .attr('fill', 'black');
         tip.transition()
@@ -135,7 +141,7 @@ function populationBar(year){
   d3.csv("data/"+year+".csv", function(error, data) {
     if (error) throw error;
 
-    data.filter(function(d){ if(d.population > 0){return d.population;}})
+    data.filter(function(d){return d.happiness  > 0 && d.happiness != ""})
       // format the data
       data.forEach(function(d) {
         d.population = +d.population;
@@ -152,7 +158,7 @@ function populationBar(year){
         .data(data)
       .enter().append("rect")
         .filter(function(d) { return d.population > 0 })
-        .attr("class", "bar")
+        .attr("class", function(d){return "bar " + d.code})
         .attr("x", function(d) { return x(d.code); })
         .attr("width", x.bandwidth())
         .attr("y", "0px") //function(d) { return y(d.happiness); })
@@ -161,6 +167,9 @@ function populationBar(year){
 
       // tooltip on mouseover
       .on("mouseover", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', .2);
+
         d3.select(this)
         .attr('fill', 'blue');
         tip.transition()
@@ -172,6 +181,9 @@ function populationBar(year){
 
       // fade out tooltip on mouse out
       .on("mouseout", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', 1);
+
         d3.select(this)
         .attr('fill', 'black');
         tip.transition()
@@ -225,7 +237,7 @@ function gdpBar(year){
   d3.csv("data/"+year+".csv", function(error, data) {
     if (error) throw error;
 
-    data.filter(function(d){ if(d.gdp > 0){return d.gdp;}})
+    data.filter(function(d){return d.happiness  > 0})
       // format the data
       data.forEach(function(d) {
         d.gdp = +d.gdp;
@@ -242,7 +254,7 @@ function gdpBar(year){
         .data(data)
       .enter().append("rect")
         .filter(function(d) { return d.gdp > 0 })
-        .attr("class", "bar")
+        .attr("class", function(d){return "bar " + d.code})
         .attr("x", function(d) { return x(d.code); })
         .attr("width", x.bandwidth())
         .attr("y", "0px") //function(d) { return y(d.happiness); })
@@ -251,6 +263,9 @@ function gdpBar(year){
 
       // tooltip on mouseover
       .on("mouseover", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', .2);
+
         d3.select(this)
         .attr('fill', 'blue');
         tip.transition()
@@ -262,6 +277,9 @@ function gdpBar(year){
 
       // fade out tooltip on mouse out
       .on("mouseout", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', 1);
+
         d3.select(this)
         .attr('fill', 'black');
         tip.transition()
@@ -315,7 +333,7 @@ function inflationBar(year){
   d3.csv("data/"+year+".csv", function(error, data) {
     if (error) throw error;
 
-    data.filter(function(d){ if(d.inflation > 0){return d.inflation;}})
+    data.filter(function(d){return d.happiness  > 0})
       // format the data
       data.forEach(function(d) {
         d.inflation = +d.inflation;
@@ -332,7 +350,7 @@ function inflationBar(year){
         .data(data)
       .enter().append("rect")
         .filter(function(d) { return d.inflation > 0 })
-        .attr("class", "bar")
+        .attr("class", function(d){return "bar " + d.code})
         .attr("x", function(d) { return x(d.code); })
         .attr("width", x.bandwidth())
         .attr("y", "0px") //function(d) { return y(d.happiness); })
@@ -341,6 +359,9 @@ function inflationBar(year){
 
       // tooltip on mouseover
       .on("mouseover", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', .2);
+
         d3.select(this)
         .attr('fill', 'blue');
         tip.transition()
@@ -352,6 +373,9 @@ function inflationBar(year){
 
       // fade out tooltip on mouse out
       .on("mouseout", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', 1);
+
         d3.select(this)
         .attr('fill', 'black');
         tip.transition()
@@ -405,7 +429,7 @@ function unemploymentBar(year){
   d3.csv("data/"+year+".csv", function(error, data) {
     if (error) throw error;
 
-    data.filter(function(d){ if(d.unemployment > 0){return d.unemployment;}})
+    data.filter(function(d){return d.happiness  > 0})
       // format the data
       data.forEach(function(d) {
         d.unemployment = +d.unemployment;
@@ -422,7 +446,7 @@ function unemploymentBar(year){
         .data(data)
       .enter().append("rect")
         .filter(function(d) { return d.unemployment > 0 })
-        .attr("class", "bar")
+        .attr("class", function(d){return "bar " + d.code})
         .attr("x", function(d) { return x(d.code); })
         .attr("width", x.bandwidth())
         .attr("y", "0px") //function(d) { return y(d.happiness); })
@@ -431,6 +455,9 @@ function unemploymentBar(year){
 
       // tooltip on mouseover
       .on("mouseover", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', .2);
+
         d3.select(this)
         .attr('fill', 'blue');
         tip.transition()
@@ -442,6 +469,9 @@ function unemploymentBar(year){
 
       // fade out tooltip on mouse out
       .on("mouseout", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', 1);
+
         d3.select(this)
         .attr('fill', 'black');
         tip.transition()
@@ -495,7 +525,7 @@ function alcoholBar(year){
   d3.csv("data/"+year+".csv", function(error, data) {
     if (error) throw error;
 
-    data.filter(function(d){ if(d.alcohol > 0){return d.alcohol;}})
+    data.filter(function(d){return d.happiness  > 0})
       // format the data
       data.forEach(function(d) {
         d.alcohol = +d.alcohol;
@@ -512,7 +542,7 @@ function alcoholBar(year){
         .data(data)
       .enter().append("rect")
         .filter(function(d) { return d.alcohol > 0 })
-        .attr("class", "bar")
+        .attr("class", function(d){return "bar " + d.code})
         .attr("x", function(d) { return x(d.code); })
         .attr("width", x.bandwidth())
         .attr("y", "0px") //function(d) { return y(d.happiness); })
@@ -521,6 +551,9 @@ function alcoholBar(year){
 
       // tooltip on mouseover
       .on("mouseover", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', .2);
+
         d3.select(this)
          //.attr('fill', 'blue');
         tip.transition()
@@ -532,6 +565,9 @@ function alcoholBar(year){
 
       // fade out tooltip on mouse out
       .on("mouseout", function(d) {
+        d3.selectAll("."+d.code)
+          .attr('opacity', 1);
+
         d3.select(this)
           //.attr('fill', 'black');
         tip.transition()

@@ -36,7 +36,7 @@
 
 	<!-- cluster map -->
 	<div class="Cluster" align="center">
-
+		<span>
 		<div id="sidebar">
 			<!-- happiness slider -->
 			<section class="range-slider">
@@ -87,7 +87,7 @@
 			<p class = "sidebar_p"> alcohol </p>
 		</div>
 		<svg id="clusterSVG"></svg>
-
+		</span>
 	</div>
 
 	<div class="bar_holder">
@@ -132,12 +132,12 @@
 				var power2 = document.getElementById(ids[i]+"2").value;
 				one = Math.pow(10, power1);
 				two = Math.pow(10, power2);
-				
+
 				document.getElementById(ids[i]+"0").innerHTML = "1x10<sup>" + power1 + "</sup>-1x10<sup>" + power2 + "</sup>";
 			} else {
 				one = document.getElementById(ids[i]+"1").value;
 				two = document.getElementById(ids[i]+"2").value;
-				
+
 				document.getElementById(ids[i]+"0").innerHTML = one + "-" + two;
 			}
 
