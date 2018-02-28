@@ -23,6 +23,7 @@
 
 	<!-- year slider -->
 	<div id="selector_div">
+		<p>Selected Year: <span id="sliderVal"></span></p>
 		<input type="range" min="2008" max="2016" value="2016" step="1" class="slider" id="year_range" onchange="update_page(this.value)">
 	</div>
 
@@ -52,20 +53,28 @@
 			<p class = "sidebar_p"> gdp </p>
 		</div>
 
-
 	</div>
 
-	<div class="happyness_bar"> </div>
-	<div class="population_bar"> </div>
-	<div class="gdp_bar"> </div>
-	<div class="inflation_bar"> </div>
-	<div class="unemployment_bar"> </div>
-	<div class="alcohol_bar"> </div>
+	<div class="bar_holder">
+		<div class="happyness_bar"> </div>
+		<div class="population_bar"> </div>
+		<div class="gdp_bar"> </div>
+		<div class="inflation_bar"> </div>
+		<div class="unemployment_bar"> </div>
+		<div class="alcohol_bar"> </div>
+	</div>
 
 </body>
 <script>
+var slider = document.getElementById("year_range");
+var output = document.getElementById("sliderVal");
+output.innerHTML = slider.value;
 
-	//first page load
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>
+<script>
 	var year = selector();
 	cloropleth(year);
 	cluster(year, get_filters());
