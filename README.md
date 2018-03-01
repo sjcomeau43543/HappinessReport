@@ -10,7 +10,7 @@ Basic Information
 - Repository: https://github.com/sjcomeau43543/DataVisFinal
 - Visualization: https://sjcomeau43543.github.io/DataVisFinal/
 - Video: https://www.youtube.com/watch?v=BOrOJ-dzpkg
-- Process book: https://github.com/sjcomeau43543/DataVisFinal/ProcessBook.pdf
+- Process book: https://github.com/sjcomeau43543/DataVisFinal/blob/master/ProcessBook.pdf
 
 Overview
 ---
