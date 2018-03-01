@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/selector.css">
 
-	<script src="http://d3js.org/d3.v4.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	<script src="https://d3js.org/topojson.v1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -25,10 +25,10 @@
 	<div align="center">
 	<div id="selector_div" align="center">
 
-		<p align="left">please <b>drag</b> the sider to select the year that you would like to analyze</p>
-		<p align="left">hover over a country to view exact reported happyness value</p>
-		<p align="left">click on a country to get a closer look</p>
-		<p>Selected Year: <span id="sliderVal"></span></p>
+		<p><b>drag</b> the sider to select the year that you would like to analyze</p>
+		<p><b>hover</b> over a country to view exact reported happyness value</p>
+		<p><b>click</b> on a country to get a closer look</p>
+		<p><b>Selected Year</b>: <span id="sliderVal"></span></p>
 		<input type="range" min="2008" max="2016" value="2016" step="1" class="slider" id="year_range" onchange="update_page(this.value)">
 	</div>
 </div>
@@ -40,7 +40,11 @@
 
 	<!-- cluster map -->
 	<div class="Cluster" align="center">
+
 		<span>
+			<p>the color of the ciricles corresponds to the happiness from the previous chart</p>
+			<p><b>hover</b> over a circle to view the country name and exact reported happyness value</p>
+			<p><b>Adjust</b> the siders to filter the cluster</p>
 		<div id="sidebar">
 			<!-- happiness slider -->
 			<section class="range-slider">
