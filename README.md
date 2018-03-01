@@ -27,8 +27,11 @@ The third section, is a series of sorted colored bar charts, where the color cor
 Outside Libraries/References
 ---
 http://d3js.org/d3.v4.min.js
+
 https://d3js.org/d3-scale-chromatic.v1.min.js
+
 https://d3js.org/topojson.v1.min.js
+
 https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
 
 Teams
